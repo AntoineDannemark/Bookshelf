@@ -8,7 +8,7 @@
 
 import * as React from "react";
 import ReactDOM from "react-dom";
+import Signup from "./components/Signup";
+import "../styles/style.css";
 
-import HelloWorld from "./components/hello";
-
-ReactDOM.render(<HelloWorld />, document.querySelector("#app"));
+ReactDOM.render(<Signup />, document.querySelector("#app"));
