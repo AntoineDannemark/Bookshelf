@@ -10,11 +10,8 @@ import express from "express";
 import path from "path";
 
 const {APP_PORT} = process.env;
-
 const app = express();
-
 const mongoose = require("mongoose");
-
 const bodyParser = require("body-parser");
 
 // Connexion à la base de donnée
@@ -28,7 +25,7 @@ mongoose
         console.log(e);
     });
 
-let db = mongoose.connection;
+const db = mongoose.connection;
 
 db.on("error", console.error.bind(console, "db connection erro"));
 db.once("open", () => {
