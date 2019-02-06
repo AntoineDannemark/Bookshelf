@@ -18,14 +18,15 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 
 // Connexion à la base de donnée
-mongoose.connect("mongodb://dev:dev@mongo:27017/Bookshelf?authSource=admin");
-
-// .then(() => {
-//     console.log('Connected to mongoDB')
-// }).catch(e => {
-//     console.log('Error while DB connecting');
-//     console.log(e);
-// });
+mongoose
+    .connect("mongodb://dev:dev@mongo:27017/Bookshelf?authSource=admin")
+    .then(() => {
+        console.log("Connected to mongoDB");
+    })
+    .catch(e => {
+        console.log("Error while DB connecting");
+        console.log(e);
+    });
 
 let db = mongoose.connection;
 
