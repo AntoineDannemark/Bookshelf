@@ -8,7 +8,13 @@
 
 import * as React from "react";
 import ReactDOM from "react-dom";
-import Signup from "./components/Signup";
+import Home from "./components/Home";
+import {BrowserRouter as Router, Route, Link} from "react-router-dom";
 import "../styles/style.css";
 
-ReactDOM.render(<Signup />, document.querySelector("#app"));
+ReactDOM.render(
+    <Router>
+        <Home />
+    </Router>,
+    document.querySelector("#app"),
+);

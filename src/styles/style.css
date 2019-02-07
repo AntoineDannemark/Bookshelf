@@ -1,4 +1,23 @@
-div, p {
-    background-color:#99cc00;
-    padding:10px;
+@import url(https://fonts.googleapis.com/css?family=Lobster:regular);
+@import url(https://fonts.googleapis.com/css?family=Pacifico:regular);
+
+html, body {
+    min-height: 100vh;
+}
+
+.blue {
+    color: #9BCACE;
+}
+
+.library {
+    font-family: 'Pacifico';
+    font-size: 112px;
+    text-align: center;
+    color: white;
+}
+
+.main {
+    background-image: url('../styles/images/bibli.jpg');
+    /* border: 1px solid black; */
+    height: 100vh;
 }

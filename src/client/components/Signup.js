@@ -1,4 +1,6 @@
-import * as React from "react";
+// import * as React from "react";
+import React, {Component} from "react";
+import {Route, Link} from "react-router-dom";
 import Logo from "../../styles/images/logo_becode_transpa.png";
 
 export default class Signup extends React.Component {
