@@ -1,4 +1,4 @@
-const User = require("../schema/userSchema");
+const User = require("../Schemas/userSchema");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
@@ -16,8 +16,8 @@ const signup = (req, res) => {
                 return err;
             }
             const user = {
-                first_name: req.body.last_name,
-                last_name: req.body.first_name,
+                first_name: req.body.first_name,
+                last_name: req.body.last_name,
                 email: req.body.email,
                 password: hash,
                 is_admin: req.body.is_admin,

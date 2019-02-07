@@ -1,8 +1,8 @@
-const usersController = require("../controllers/usersController");
+const usersController = require("../Controllers/usersController");
 
 module.exports = function(app) {
-    app.post("/login", usersController.login);
-    app.post("/signup", usersController.signup);
     app.get("/", usersController.fetchAll);
     app.get("/:id", usersController.showUser);
+    app.post("/signup", usersController.signup);
+    app.post("/login", usersController.login);
 };
