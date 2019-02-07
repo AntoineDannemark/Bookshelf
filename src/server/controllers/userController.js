@@ -12,18 +12,5 @@ module.exports = function(app) {
             res.send({users: users});
         });
     });
-    app.get("/:id", (req, res) => {
-        User.findOne(
-            {
-                _id: req.params.id,
-            },
-            (err, user) => {
-                if (err) {
-                    res.status(404).send(err);
-                } else {
-                    res.send({users: user});
-                }
-            },
-        );
-    });
+    app.get("/:id", account.showUser);
 };

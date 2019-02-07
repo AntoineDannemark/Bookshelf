@@ -120,5 +120,21 @@ const login = function(req, res) {
     }
 };
 
+const showUser = (req, res) => {
+    User.findOne(
+        {
+            _id: req.params.id,
+        },
+        (err, user) => {
+            if (err) {
+                res.status(404).send(err);
+            } else {
+                res.send({users: user});
+            }
+        },
+    );
+};
+
+exports.showUser = showUser;
 exports.login = login;
 exports.signup = signup;
