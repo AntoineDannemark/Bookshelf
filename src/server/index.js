@@ -66,7 +66,7 @@ app.use((req, res, next) => {
 const router = new express.Router();
 
 app.use("/users", router);
-require(`${__dirname}/controllers/userController`)(router);
+require(`${__dirname}/Routes/usersRoutes`)(router);
 
 app.listen(APP_PORT, () =>
     console.log(`🚀 Server is listening on port ${APP_PORT}.`),
