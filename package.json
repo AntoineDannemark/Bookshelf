@@ -46,10 +46,10 @@
     "webpack-dev-server": "^3.1.10"
   },
   "dependencies": {
+    "bcrypt": "^3.0.4",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "mongoose": "^5.4.10",
-    "password-hash": "^1.2.2",
     "react": "^16.7.0",
     "react-dom": "^16.7.0"
   },

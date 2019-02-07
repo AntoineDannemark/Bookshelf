@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const passwordHash = require("password-hash");
+const bcrypt = require("bcrypt");
 const jwt = require("jwt-simple");
 const config = require("../config/config");
 const Schema = mongoose.Schema;
@@ -46,8 +46,15 @@ const userSchema = new Schema(
 );
 
 userSchema.methods = {
-    authenticate: function(password) {
-        return passwordHash.verify(password, this.password);
+    authenticate: function(password, next) {
+        bcrypt.compare(password, this.password, (err, result) => {
+            if (err) {
+                throw err;
+            }
+            next(result);
+        });
+        // return true;
+        // return passwordHash.verify(password, this.password);
     },
     getToken: function() {
         return jwt.encode(this, config.secret);

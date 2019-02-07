@@ -1,5 +1,6 @@
 const User = require("../../schema/schemaUser");
-const passwordHash = require("password-hash");
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
 
 const signup = (req, res) => {
     if (!req.body.email || !req.body.password) {
@@ -8,21 +9,28 @@ const signup = (req, res) => {
             text: "Requête invalide",
         });
     } else {
-        let user = {
+        const password = req.body.password;
+
+        bcrypt.hash(password, saltRounds, (err, hash) => {
+            if (err) {
+                return err;
+            }
+            const user = {
                 first_name: req.body.last_name,
                 last_name: req.body.first_name,
                 email: req.body.email,
-                password: passwordHash.generate(req.body.password),
+                password: hash,
                 is_admin: req.body.is_admin,
                 promotion: req.body.promotion,
-            },
-            findUser = new Promise((resolve, reject) => {
+            };
+
+            const findUser = new Promise((resolve, reject) => {
                 User.findOne(
                     {
                         email: user.email,
                     },
-                    (err, result) => {
-                        if (err) {
+                    (error, result) => {
+                        if (error) {
                             reject(500);
                         } else if (result) {
                             res.send("email already registered");
@@ -33,46 +41,47 @@ const signup = (req, res) => {
                 );
             });
 
-        findUser.then(
-            () => {
-                let _u = new User(user);
+            findUser.then(
+                () => {
+                    let _u = new User(user);
 
-                _u.save((err, usr) => {
-                    if (err) {
-                        res.status(500).json({
-                            text: "Erreur interne",
-                        });
-                    } else {
-                        res.status(200).json({
-                            text: "Succès",
-                            token: usr.getToken(),
-                        });
+                    _u.save((conErr, usr) => {
+                        if (conErr) {
+                            res.status(500).json({
+                                text: "Erreur interne",
+                            });
+                        } else {
+                            res.status(200).json({
+                                text: "Succès",
+                                token: usr.getToken(),
+                            });
+                        }
+                    });
+                },
+                error => {
+                    switch (error) {
+                        case 500:
+                            res.status(500).json({
+                                text: "Erreur interne",
+                            });
+                            break;
+                        case 204:
+                            res.status(204).json({
+                                text: "L'adresse email existe déjà",
+                            });
+                            break;
+                        default:
+                            res.status(500).json({
+                                text: "Erreur interne",
+                            });
                     }
-                });
-            },
-            error => {
-                switch (error) {
-                    case 500:
-                        res.status(500).json({
-                            text: "Erreur interne",
-                        });
-                        break;
-                    case 204:
-                        res.status(204).json({
-                            text: "L'adresse email existe déjà",
-                        });
-                        break;
-                    default:
-                        res.status(500).json({
-                            text: "Erreur interne",
-                        });
-                }
-            },
-        );
+                },
+            );
+        });
     }
 };
 
-const login = (req, res) => {
+const login = function(req, res) {
     if (!req.body.email || !req.body.password) {
         // Le cas où l"email ou bien le password ne serait pas soumit ou nul
         res.status(400).json({
@@ -84,24 +93,26 @@ const login = (req, res) => {
                 email: req.body.email,
             },
             (err, user) => {
-                if (err) {
-                    res.status(500).json({
-                        text: "Erreur interne",
-                    });
-                } else if (!user) {
-                    res.status(401).json({
-                        text: "L'utilisateur n'existe pas",
-                    });
-                } else if (user.authenticate(req.body.password)) {
-                    res.status(200).json({
-                        token: user.getToken(),
-                        text: "Authentification réussie",
-                    });
-                } else {
-                    res.status(401).json({
-                        text: "Mot de passe incorrect",
-                    });
-                }
+                user.authenticate(req.body.password, isChecked => {
+                    if (err) {
+                        res.status(500).json({
+                            text: "Erreur interne",
+                        });
+                    } else if (!user) {
+                        res.status(401).json({
+                            text: "L'utilisateur n'existe pas",
+                        });
+                    } else if (isChecked) {
+                        res.status(200).json({
+                            token: user.getToken(),
+                            text: "Authentification réussie",
+                        });
+                    } else {
+                        res.status(401).json({
+                            text: "Mot de passe incorrect",
+                        });
+                    }
+                });
             },
         );
     }
