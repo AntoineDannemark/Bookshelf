@@ -6,6 +6,18 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema(
     {
+        first_name: {
+            type: String,
+            lowercase: true,
+            trim: true,
+            required: true,
+        },
+        last_name: {
+            type: String,
+            lowercase: true,
+            trim: true,
+            required: true,
+        },
         email: {
             type: String,
             lowercase: true,
@@ -17,6 +29,16 @@ const userSchema = new Schema(
             type: String,
             required: true,
         },
+        is_admin: {
+            type: Boolean,
+            required: true,
+            default: false,
+        },
+        promotion: {
+            type: String,
+            required: true,
+            enum: ["liege", "bruxelles"],
+        },
     },
     {
         timestamps: {createdAt: "created_at"},
@@ -25,8 +47,7 @@ const userSchema = new Schema(
 
 userSchema.methods = {
     authenticate: function(password) {
-        console.log(passwordHash.verify(password, this.password));
-        return true;
+        return passwordHash.verify(password, this.password);
     },
     getToken: function() {
         return jwt.encode(this, config.secret);

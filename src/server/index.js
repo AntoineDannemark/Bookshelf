@@ -16,7 +16,10 @@ const bodyParser = require("body-parser");
 
 // Connexion à la base de donnée
 mongoose
-    .connect("mongodb://dev:dev@mongo:27017/Bookshelf?authSource=admin")
+    .connect(
+        "mongodb://dev:dev@mongo:27017/Bookshelf?authSource=admin",
+        {useNewUrlParser: true},
+    )
     .then(() => {
         console.log("Connected to mongoDB");
     })
@@ -24,6 +27,8 @@ mongoose
         console.log("Error while DB connecting");
         console.log(e);
     });
+
+mongoose.Promise = global.Promise;
 
 const db = mongoose.connection;
 
@@ -60,7 +65,7 @@ app.use((req, res, next) => {
 // Définition du routeur
 const router = new express.Router();
 
-app.use("/user", router);
+app.use("/users", router);
 require(`${__dirname}/controllers/userController`)(router);
 
 app.listen(APP_PORT, () =>

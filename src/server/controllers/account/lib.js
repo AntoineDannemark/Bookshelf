@@ -9,8 +9,12 @@ const signup = (req, res) => {
         });
     } else {
         let user = {
+                first_name: req.body.last_name,
+                last_name: req.body.first_name,
                 email: req.body.email,
                 password: passwordHash.generate(req.body.password),
+                is_admin: req.body.is_admin,
+                promotion: req.body.promotion,
             },
             findUser = new Promise((resolve, reject) => {
                 User.findOne(
@@ -102,8 +106,6 @@ const login = (req, res) => {
         );
     }
 };
-
-// On exporte nos deux fonctions
 
 exports.login = login;
 exports.signup = signup;
