@@ -6,7 +6,7 @@ const signup = (req, res) => {
     if (!req.body.email || !req.body.password) {
         // Le cas où l"email ou bien le password ne serait pas soumit ou nul
         res.status(400).json({
-            text: "Requête invalide",
+            text: "Wrong Request",
         });
     } else {
         const password = req.body.password;
@@ -31,7 +31,9 @@ const signup = (req, res) => {
                     },
                     (error, result) => {
                         if (error) {
-                            reject(500);
+                            reject(500).send(
+                                "server error 500 @ findUser.user.findOne",
+                            );
                         } else if (result) {
                             res.send("email already registered");
                         } else {
@@ -48,11 +50,11 @@ const signup = (req, res) => {
                     _u.save((conErr, usr) => {
                         if (conErr) {
                             res.status(500).json({
-                                text: "Erreur interne",
+                                text: "server error 500 @ findUser.then.save ",
                             });
                         } else {
                             res.status(200).json({
-                                text: "Succès",
+                                text: "New user created",
                                 token: usr.getToken(),
                             });
                         }
@@ -62,17 +64,18 @@ const signup = (req, res) => {
                     switch (error) {
                         case 500:
                             res.status(500).json({
-                                text: "Erreur interne",
+                                text: "server error 500 @ user creation",
                             });
                             break;
                         case 204:
                             res.status(204).json({
-                                text: "L'adresse email existe déjà",
+                                text: "server error 204 @ user creation",
                             });
                             break;
                         default:
                             res.status(500).json({
-                                text: "Erreur interne",
+                                text:
+                                    "server error default_500 @ user creation",
                             });
                     }
                 },
@@ -85,7 +88,7 @@ const login = function(req, res) {
     if (!req.body.email || !req.body.password) {
         // Le cas où l"email ou bien le password ne serait pas soumit ou nul
         res.status(400).json({
-            text: "Requête invalide",
+            text: "Wrong Request",
         });
     } else {
         User.findOne(
@@ -95,22 +98,22 @@ const login = function(req, res) {
             (err, user) => {
                 if (err) {
                     res.status(500).json({
-                        text: "Erreur interne",
+                        text: "Server error 500 @ login",
                     });
                 } else if (!user) {
                     res.status(401).json({
-                        text: "L'utilisateur n'existe pas",
+                        text: "Unknown User",
                     });
                 } else {
                     user.authenticate(req.body.password, isChecked => {
                         if (isChecked) {
                             res.status(200).json({
                                 token: user.getToken(),
-                                text: "Authentification réussie",
+                                text: "You are logged in!",
                             });
                         } else {
                             res.status(401).json({
-                                text: "Mot de passe incorrect",
+                                text: "Wrong Password",
                             });
                         }
                     });

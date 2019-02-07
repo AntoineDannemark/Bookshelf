@@ -53,9 +53,8 @@ userSchema.methods = {
             }
             next(result);
         });
-        // return true;
-        // return passwordHash.verify(password, this.password);
     },
+
     getToken: function() {
         return jwt.encode(this, config.secret);
     },
