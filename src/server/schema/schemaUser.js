@@ -2,8 +2,9 @@ const mongoose = require("mongoose");
 const passwordHash = require("password-hash");
 const jwt = require("jwt-simple");
 const config = require("../config/config");
+const Schema = mongoose.Schema;
 
-const userSchema = new mongoose.Schema(
+const userSchema = new Schema(
     {
         email: {
             type: String,
@@ -23,13 +24,8 @@ const userSchema = new mongoose.Schema(
 );
 
 userSchema.methods = {
-    authenticate: password => {
-        let pwcheck =
-            "sha1$85740077$1$913ebcbb84752f59a50a400842ad227e363b0928";
-
-        console.log(this);
-        console.log(password);
-        console.log(passwordHash.verify(password, pwcheck));
+    authenticate: function(password) {
+        console.log(passwordHash.verify(password, this.password));
         return true;
     },
     getToken: function() {

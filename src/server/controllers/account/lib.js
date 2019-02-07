@@ -21,7 +21,7 @@ const signup = (req, res) => {
                         if (err) {
                             reject(500);
                         } else if (result) {
-                            reject(204);
+                            res.send("email already registered");
                         } else {
                             resolve(true);
                         }
@@ -55,7 +55,7 @@ const signup = (req, res) => {
                         break;
                     case 204:
                         res.status(204).json({
-                            text: "Ladresse email existe déjà",
+                            text: "L'adresse email existe déjà",
                         });
                         break;
                     default:
@@ -91,7 +91,7 @@ const login = (req, res) => {
                 } else if (user.authenticate(req.body.password)) {
                     res.status(200).json({
                         token: user.getToken(),
-                        text: "Authentification réussi",
+                        text: "Authentification réussie",
                     });
                 } else {
                     res.status(401).json({

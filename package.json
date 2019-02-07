@@ -36,7 +36,9 @@
     "file-loader": "^2.0.0",
     "html-webpack-plugin": "^3.2.0",
     "husky": "^1.0.1",
+    "jwt-simple": "^0.5.5",
     "lint-staged": "^8.1.0",
+    "password-hash": "^1.2.2",
     "prettier": "^1.14.3",
     "uglifyjs-webpack-plugin": "^2.0.1",
     "webpack": "^4.20.2",
@@ -44,7 +46,10 @@
     "webpack-dev-server": "^3.1.10"
   },
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.16.4",
+    "mongoose": "^5.4.10",
+    "password-hash": "^1.2.2",
     "react": "^16.7.0",
     "react-dom": "^16.7.0"
   },
