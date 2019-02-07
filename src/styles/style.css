@@ -9,6 +9,11 @@ html, body {
     color: #9BCACE;
 }
 
+input {
+    height: 30px;
+    width: 400px;
+}
+
 .library {
     font-family: 'Pacifico';
     font-size: 112px;
@@ -16,8 +21,50 @@ html, body {
     color: white;
 }
 
+.logform {
+    width: 400px;
+    margin: auto;
+}
+
+.logformbackground {
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 435px;
+    margin: auto;
+    padding: 25px;
+    height: 200px;
+    border-radius: 25px;
+}
+
+.logform input {
+    margin-bottom: 25px;
+}
+
+.logo {
+    width: 803px;
+    margin: auto;
+    top: 25px;
+}
+
+.logsubmitbutton {
+    border: 1px solid #9bcace;
+    font-family: Pacifico;
+    font-size: 2em;
+    width: 170px;
+    height: 70px;
+    box-shadow:  4px 5px 9px 0px #747777;
+    border-radius: 5px;
+    background-color: #85b1b1;
+    position: absolute;
+    left: 120px;
+}
+
 .main {
     background-image: url('../styles/images/bibli.jpg');
     /* border: 1px solid black; */
     height: 100vh;
+    position: relative;
+}
+
+.positionrelative {
+    position: relative;
 }
