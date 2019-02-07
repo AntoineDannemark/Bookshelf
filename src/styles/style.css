@@ -65,6 +65,35 @@ input {
     position: relative;
 }
 
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: rgb(121, 121, 121);
+    text-align: center;
+    font-weight: 50;
+    font-family: Pacifico;
+    font-size: 22px;
+  }
+  ::-moz-placeholder { /* Firefox 19+ */
+    color: rgb(121, 121, 121);
+    text-align: center;
+    font-weight: 50;
+    font-family: Pacifico;
+    font-size: 22px;
+  }
+  :-ms-input-placeholder { /* IE 10+ */
+    color: rgb(121, 121, 121);
+    text-align: center;
+    font-weight: 50;
+    font-family: Pacifico;
+    font-size: 22px;
+  }
+  :-moz-placeholder { /* Firefox 18- */
+    color: rgb(121, 121, 121);
+    text-align: center;
+    font-weight: 50;
+    font-family: Pacifico;
+    font-size: 22px;
+  }
+
 .positionrelative {
     position: relative;
 }

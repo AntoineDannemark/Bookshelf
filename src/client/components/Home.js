@@ -34,17 +34,16 @@ export default class Home extends React.Component {
                 <div className='logformbackground'>
                     <form className='logform' onSubmit={this.handleSubmit}>
                         <div>
-                            <input type="text" placeholder='Email' />
+                            <input type="text" placeholder='youremail@wtf.com' />
                         </div>
                         <div>
-                            <input type="text" placeholder= 'Password' />
+                            <input type="text" placeholder= 'Your password' />
                         </div>
                         <div className='positionrelative'>
                             <input className='logsubmitbutton' type="submit" value="Submit" />
                         </div>
                     </form>
                 </div>
-
             </div>
         );
     }
