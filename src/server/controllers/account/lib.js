@@ -1,4 +1,4 @@
-const User = require("../../schema/schemaUser");
+const User = require("../../schema/userSchema");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
@@ -135,6 +135,16 @@ const showUser = (req, res) => {
     );
 };
 
+const fetchAll = (req, res) => {
+    User.find({}, (err, users) => {
+        if (err) {
+            res.send(err);
+        }
+        res.send({users: users});
+    });
+};
+
+exports.fetchAll = fetchAll;
 exports.showUser = showUser;
 exports.login = login;
 exports.signup = signup;
