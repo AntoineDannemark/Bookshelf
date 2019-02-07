@@ -93,26 +93,28 @@ const login = function(req, res) {
                 email: req.body.email,
             },
             (err, user) => {
-                user.authenticate(req.body.password, isChecked => {
-                    if (err) {
-                        res.status(500).json({
-                            text: "Erreur interne",
-                        });
-                    } else if (!user) {
-                        res.status(401).json({
-                            text: "L'utilisateur n'existe pas",
-                        });
-                    } else if (isChecked) {
-                        res.status(200).json({
-                            token: user.getToken(),
-                            text: "Authentification réussie",
-                        });
-                    } else {
-                        res.status(401).json({
-                            text: "Mot de passe incorrect",
-                        });
-                    }
-                });
+                if (err) {
+                    res.status(500).json({
+                        text: "Erreur interne",
+                    });
+                } else if (!user) {
+                    res.status(401).json({
+                        text: "L'utilisateur n'existe pas",
+                    });
+                } else {
+                    user.authenticate(req.body.password, isChecked => {
+                        if (isChecked) {
+                            res.status(200).json({
+                                token: user.getToken(),
+                                text: "Authentification réussie",
+                            });
+                        } else {
+                            res.status(401).json({
+                                text: "Mot de passe incorrect",
+                            });
+                        }
+                    });
+                }
             },
         );
     }
