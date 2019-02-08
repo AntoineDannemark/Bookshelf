@@ -18,8 +18,8 @@ module.exports = function(app) {
 
     app.get("/test", (req, res) => {
         Book.find()
-            .select("title")
-            .populate("owner", "first_name")
+            .select("title author isbn")
+            .populate("owner", "first_name promotion shoot")
             .exec()
             .then(docs => {
                 res.status(200).json({
@@ -27,8 +27,10 @@ module.exports = function(app) {
                     books: docs.map(doc => {
                         return {
                             title: doc.title,
+                            un_livre_un_jour_une_nuit: doc.author,
+                            tonculcestdelisbn: doc.isbn,
                             _id: doc._id,
-                            owner: doc.owner,
+                            le_patrick_propriétaire_sa_pelle: doc.owner,
                         };
                     }),
                 });
