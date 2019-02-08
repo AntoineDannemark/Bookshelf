@@ -1,16 +1,15 @@
 import React, {Component} from 'react';
 import Submitbutton from './Submitbutton';
-import Inputtext from './Inputtext';
+import Inputsignin from './Inputsignin';
 class Logform extends Component {
     render(){
         return(
-                <div className='logformbackground'>
-                    <form className='logform' onSubmit={this.handleSubmit}>
-                        <Inputtext />
-                        <Inputtext />
-                        <Submitbutton />
-                    </form>
-                </div>
+            <div className='logformbackground'>
+                <form className='logform' onSubmit={this.handleSubmit}>
+                    <Inputsignin />
+                    <Submitbutton />
+                </form>
+            </div>
         );
     }
 }

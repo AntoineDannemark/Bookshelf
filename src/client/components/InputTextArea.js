@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-class Inputtext extends Component {
+class InputTextArea extends Component {
     render(){
         return(
             <div>
@@ -8,4 +8,4 @@ class Inputtext extends Component {
         );
     }
 }
-export default Inputtext;
+export default InputTextArea;
