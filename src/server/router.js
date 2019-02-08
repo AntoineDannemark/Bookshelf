@@ -26,8 +26,10 @@ module.exports = function(app) {
                     count: docs.length,
                     books: docs.map(doc => {
                         return {
-                            title: doc.title,
-                            un_livre_un_jour_une_nuit: doc.author,
+                            titLIVE: doc.title,
+                            un_livre_un_jour_une_nuit: `${
+                                doc.author
+                            } is in de haus`,
                             tonculcestdelisbn: doc.isbn,
                             _id: doc._id,
                             le_patrick_propriétaire_sa_pelle: doc.owner,
