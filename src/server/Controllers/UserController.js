@@ -2,9 +2,8 @@ const User = require("../Schemas/userSchema");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
-const signup = (req, res) => {
+const store = (req, res) => {
     if (!req.body.email || !req.body.password) {
-        // Le cas où l"email ou bien le password ne serait pas soumit ou nul
         res.status(400).json({
             text: "Wrong Request",
         });
@@ -123,7 +122,7 @@ const login = function(req, res) {
     }
 };
 
-const showUser = (req, res) => {
+const show = (req, res) => {
     User.findOne(
         {
             _id: req.params.id,
@@ -132,13 +131,13 @@ const showUser = (req, res) => {
             if (err) {
                 res.status(404).send(err);
             } else {
-                res.send({users: user});
+                res.send(user);
             }
         },
     );
 };
 
-const fetchAll = (req, res) => {
+const index = (req, res) => {
     User.find({}, (err, users) => {
         if (err) {
             res.send(err);
@@ -147,7 +146,22 @@ const fetchAll = (req, res) => {
     });
 };
 
-exports.fetchAll = fetchAll;
-exports.showUser = showUser;
+const destroy = (req, res) => {
+    User.findByIdAndRemove(req.params.id, (err, user) => {
+        if (err) {
+            return res.status(500).send(err);
+        }
+        const response = {
+            message: "User successfully deleted",
+            id: user._id,
+        };
+
+        return res.status(200).send(response);
+    });
+};
+
+exports.index = index;
+exports.show = show;
 exports.login = login;
-exports.signup = signup;
+exports.store = store;
+exports.destroy = destroy;

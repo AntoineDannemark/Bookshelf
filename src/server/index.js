@@ -10,44 +10,35 @@ import express from "express";
 import path from "path";
 
 const {APP_PORT} = process.env;
+
 const app = express();
+const router = new express.Router();
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const urlencodedParser = bodyParser.urlencoded({
+    extended: true,
+});
 
-// Connexion à la base de donnée
 mongoose
     .connect(
         "mongodb://dev:dev@mongo:27017/Bookshelf?authSource=admin",
         {useNewUrlParser: true},
     )
     .then(() => {
-        console.log("Connected to mongoDB");
+        console.log("CONNECTED TO BOOKSHELF TABLE");
     })
     .catch(e => {
-        console.log("Error while DB connecting");
+        console.log("ERROR ON DB CONNECTION");
         console.log(e);
     });
 
 mongoose.Promise = global.Promise;
 
-const db = mongoose.connection;
-
-db.on("error", console.error.bind(console, "db connection error"));
-db.once("open", () => {
-    console.log("connected");
-});
-
 app.use(express.static(path.resolve(__dirname, "../../bin/client")));
-
-// Body Parser
-const urlencodedParser = bodyParser.urlencoded({
-    extended: true,
-});
-
 app.use(urlencodedParser);
 app.use(bodyParser.json());
 
-// Définition des CORS
+// .. SETHEADER.. WHAT DO THEY MEAN EXACTLY ?? MAKE MIDDLEWARE FOLDER TO CLEAN CODE ??
 app.use((req, res, next) => {
     res.setHeader(
         "Access-Control-Allow-Headers",
@@ -62,11 +53,8 @@ app.use((req, res, next) => {
     next();
 });
 
-// Définition du routeur
-const router = new express.Router();
-
-app.use("/users", router);
-require(`${__dirname}/Routes/usersRoutes`)(router);
+app.use("/api", router);
+require(`${__dirname}/router`)(router);
 
 app.listen(APP_PORT, () =>
     console.log(`🚀 Server is listening on port ${APP_PORT}.`),
