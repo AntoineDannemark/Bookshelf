@@ -146,6 +146,20 @@ const index = (req, res) => {
     });
 };
 
+const update = (req, res) => {
+    User.findByIdAndUpdate(
+        req.params.id,
+        req.body,
+        {new: true},
+        (err, user) => {
+            if (err) {
+                return res.status(500).send(err);
+            }
+            return res.send(user);
+        },
+    );
+};
+
 const destroy = (req, res) => {
     User.findByIdAndRemove(req.params.id, (err, user) => {
         if (err) {
@@ -164,4 +178,5 @@ exports.index = index;
 exports.show = show;
 exports.login = login;
 exports.store = store;
+exports.update = update;
 exports.destroy = destroy;

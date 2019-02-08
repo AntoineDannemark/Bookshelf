@@ -58,10 +58,6 @@ userSchema.methods = {
     getToken: function() {
         return jwt.encode(this, config.secret);
     },
-
-    remove: () => {
-        this.user.remove();
-    },
 };
 
 module.exports = mongoose.model("User", userSchema);
