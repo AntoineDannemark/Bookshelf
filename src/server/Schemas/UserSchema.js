@@ -4,7 +4,7 @@ const jwt = require("jwt-simple");
 const config = require("../config/config");
 const Schema = mongoose.Schema;
 
-const userSchema = new Schema(
+const UserSchema = new Schema(
     {
         first_name: {
             type: String,
@@ -45,7 +45,7 @@ const userSchema = new Schema(
     },
 );
 
-userSchema.methods = {
+UserSchema.methods = {
     authenticate: function(password, next) {
         bcrypt.compare(password, this.password, (err, result) => {
             if (err) {
@@ -60,4 +60,4 @@ userSchema.methods = {
     },
 };
 
-module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model("User", UserSchema);

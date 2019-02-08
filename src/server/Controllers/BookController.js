@@ -6,7 +6,8 @@ const store = (req, res) => {
         !req.body.author ||
         !req.body.isbn ||
         !req.body.language ||
-        !req.body.format
+        !req.body.format ||
+        !req.body.owner
     ) {
         res.status(400).json({
             text: "Wrong Request",
@@ -18,6 +19,7 @@ const store = (req, res) => {
             isbn: req.body.isbn,
             language: req.body.language,
             format: req.body.format,
+            owner: req.body.owner,
         };
 
         const findBook = new Promise((resolve, reject) => {
