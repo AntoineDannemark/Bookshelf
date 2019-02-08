@@ -1,6 +1,9 @@
 import React, {Component} from "react";
 import {Route, Link} from "react-router-dom";
 import "../../styles/style.css";
+import Logo from './Logo';
+import Slogan from './Slogan';
+import Logform from "./Logform";
 
 export default class Home extends React.Component {
     constructor(props) {
@@ -21,29 +24,9 @@ export default class Home extends React.Component {
     render() {
         return (
             <div className="main">
-                <div className='logo'>
-                    <img src={require("../../styles/images/bshelf2.png")} />
-                </div>
-
-                <div>
-                    <p className="library">
-                        Your <span className="blue">code</span> library
-                    </p>
-                </div>
-
-                <div className='logformbackground'>
-                    <form className='logform' onSubmit={this.handleSubmit}>
-                        <div>
-                            <input type="text" placeholder='youremail@wtf.com' />
-                        </div>
-                        <div>
-                            <input type="text" placeholder= 'Your password' />
-                        </div>
-                        <div className='positionrelative'>
-                            <input className='logsubmitbutton' type="submit" value="Submit" />
-                        </div>
-                    </form>
-                </div>
+                <Logo />
+                <Slogan />
+                <Logform />
             </div>
         );
     }
