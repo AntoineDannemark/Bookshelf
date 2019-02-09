@@ -110,9 +110,9 @@ const update = (req, res) => {
         {new: true},
         (err, book) => {
             if (err) {
-                return res.status(500).send(err);
+                return res.status(500).json(err);
             }
-            return res.send(book);
+            return res.json(book);
         },
     );
 };

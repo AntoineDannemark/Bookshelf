@@ -1,6 +1,8 @@
 const UserController = require("./Controllers/UserController");
 const BookController = require("./Controllers/BookController");
-const Book = require("./Schemas/BookSchema");
+const ReviewController = require("./Controllers/ReviewController");
+
+const Review = require("./Schemas/ReviewSchema");
 
 module.exports = function(app) {
     app.get("/users", UserController.index);
@@ -16,23 +18,28 @@ module.exports = function(app) {
     app.patch("/books/:id", BookController.update);
     app.post("/books", BookController.store);
 
+    app.get("/reviews", ReviewController.index);
+    app.get("/reviews/:id", ReviewController.show);
+    app.delete("/reviews/:id", ReviewController.destroy);
+    app.patch("/reviews/:id", ReviewController.update);
+    app.post("/reviews", ReviewController.store);
+
     app.get("/test", (req, res) => {
-        Book.find()
-            .select("title author isbn")
-            .populate("owner", "first_name promotion shoot")
-            .exec()
+        Review.find()
+            .select("book note comment owner")
+            .populate("book", "title author")
+            .populate("owner", "first_name last_name promotion")
+            // .exec()
             .then(docs => {
-                res.status(200).json({
+                res.status(200).send({
                     count: docs.length,
-                    books: docs.map(doc => {
+                    review: docs.map(doc => {
                         return {
-                            titLIVE: doc.title,
-                            un_livre_un_jour_une_nuit: `${
-                                doc.author
-                            } is in de haus`,
-                            tonculcestdelisbn: doc.isbn,
-                            _id: doc._id,
-                            le_patrick_propriétaire_sa_pelle: doc.owner,
+                            book: doc.book,
+                            note: doc.note,
+                            comment: doc.comment,
+                            id: doc._id,
+                            owner: doc.owner,
                         };
                     }),
                 });
