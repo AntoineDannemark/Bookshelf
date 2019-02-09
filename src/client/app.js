@@ -14,7 +14,7 @@ import "../styles/style.css";
 
 ReactDOM.render(
     <Router>
-        <div className='main'>
+        <div>
             <Home />
         </div>
     </Router>,

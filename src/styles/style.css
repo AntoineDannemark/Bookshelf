@@ -5,6 +5,11 @@ html, body {
     min-height: 100vh;
 }
 
+#app {
+    background-image: url('../styles/images/bibli.jpg');
+    height: 100vh;
+}
+
 .blue {
     color: #9BCACE;
 }
