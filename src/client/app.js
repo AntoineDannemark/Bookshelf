@@ -14,7 +14,9 @@ import "../styles/style.css";
 
 ReactDOM.render(
     <Router>
-        <Home />
+        <div className='main'>
+            <Home />
+        </div>
     </Router>,
     document.querySelector("#app"),
 );

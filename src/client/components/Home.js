@@ -8,7 +8,7 @@ import Logform from "./Logform";
 export default class Home extends React.Component {
     render() {
         return (
-            <div className="main">
+            <div>
                 <Logo />
                 <Slogan />
                 <Logform />
