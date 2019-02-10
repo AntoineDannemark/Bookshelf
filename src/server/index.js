@@ -11,7 +11,7 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 
 const app = express();
-const router = new express.Router();
+// const router = new express.Router();
 const {APP_PORT} = process.env;
 
 app.use(logger("dev"));
@@ -31,14 +31,37 @@ app.use(
     }),
 );
 
-app.use(express.static(path.resolve(__dirname, "../../bin/client")));
-
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(express.static(path.resolve(__dirname, "../../bin/client")));
 
 const User = require("./Schemas/UserSchema");
 
 passport.use(new LocalStrategy(User.authenticate()));
+// passport.use(
+//     new LocalStrategy(
+//         // {
+//         //     usernameField: "email",
+//         //     passwordField: "password",
+//         // },
+//         (username, password, done) => {
+//             User.findOne({username: username}, (err, user) => {
+//                 if (err) {
+//                     return done(err);
+//                 }
+//                 if (!user) {
+//                     console.log("Wrong username");
+//                     return done(null, false);
+//                 }
+//                 if (!user.validPassword(password)) {
+//                     console.log("Wrong password");
+//                     return done(null, false);
+//                 }
+//                 return done(null, user);
+//             });
+//         },
+//     ),
+// );
 
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
@@ -140,9 +163,12 @@ app.use((req, res, next) => {
     next();
 });
 
-// Check Leny
-require(`${__dirname}/router`)(router);
-app.use("/api", router);
+// Register Routes
+// ---------------
+// Check Leny best practice + (router) ??
+// require(`${__dirname}/router`)(router);
+// app.use("/api", router);
+app.use("/api", require("./router"));
 
 app.listen(APP_PORT, () =>
     console.log(`🚀 Server is listening on port ${APP_PORT}.`),

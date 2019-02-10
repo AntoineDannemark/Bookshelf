@@ -2,6 +2,68 @@ const User = require("../Schemas/UserSchema");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
+const show = (req, res) => {
+    User.findOne(
+        {
+            _id: req.params.id,
+        },
+        (err, user) => {
+            if (err) {
+                res.status(404).send(err);
+            } else {
+                res.send(user);
+            }
+        },
+    );
+};
+
+const index = (req, res) => {
+    User.find({}, (err, users) => {
+        if (err) {
+            res.send(err);
+        }
+        res.send({users: users});
+    });
+};
+
+const login = function(req, res) {
+    if (!req.body.email || !req.body.password) {
+        res.status(400).json({
+            text: "Wrong Request",
+        });
+    } else {
+        User.findOne(
+            {
+                email: req.body.email,
+            },
+            (err, user) => {
+                if (err) {
+                    res.status(500).json({
+                        text: "Server error 500 @ login",
+                    });
+                } else if (!user) {
+                    res.status(401).json({
+                        text: "Unknown User",
+                    });
+                } else {
+                    user.authenticate(req.body.password, isChecked => {
+                        if (isChecked) {
+                            res.status(200).json({
+                                token: user.getToken(),
+                                text: "You are logged in!",
+                            });
+                        } else {
+                            res.status(401).json({
+                                text: "Wrong Password",
+                            });
+                        }
+                    });
+                }
+            },
+        );
+    }
+};
+
 const store = (req, res) => {
     if (!req.body.email || !req.body.password) {
         res.status(400).json({
@@ -83,30 +145,6 @@ const store = (req, res) => {
     }
 };
 
-const show = (req, res) => {
-    User.findOne(
-        {
-            _id: req.params.id,
-        },
-        (err, user) => {
-            if (err) {
-                res.status(404).send(err);
-            } else {
-                res.send(user);
-            }
-        },
-    );
-};
-
-const index = (req, res) => {
-    User.find({}, (err, users) => {
-        if (err) {
-            res.send(err);
-        }
-        res.send({users: users});
-    });
-};
-
 const update = (req, res) => {
     User.findByIdAndUpdate(
         req.params.id,
@@ -137,6 +175,7 @@ const destroy = (req, res) => {
 
 exports.index = index;
 exports.show = show;
+exports.login = login;
 exports.store = store;
 exports.update = update;
 exports.destroy = destroy;

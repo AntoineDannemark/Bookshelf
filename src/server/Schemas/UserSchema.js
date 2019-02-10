@@ -1,45 +1,45 @@
-let mongoose = require("mongoose"),
-    Schema = mongoose.Schema,
-    passportLocalMongoose = require("passport-local-mongoose");
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+const passportLocalMongoose = require("passport-local-mongoose");
 // const bcrypt = require("bcrypt");
 // const jwt = require("jwt-simple");
 // const config = require("../config/config");
 
-const UserSchema = new Schema(
+const User = new Schema(
     {
-        first_name: {
-            type: String,
-            lowercase: true,
-            trim: true,
-            required: true,
-        },
-        last_name: {
-            type: String,
-            lowercase: true,
-            trim: true,
-            required: true,
-        },
-        email: {
-            type: String,
-            lowercase: true,
-            trim: true,
-            unique: true,
-            required: true,
-        },
-        password: {
-            type: String,
-            required: true,
-        },
-        is_admin: {
-            type: Boolean,
-            required: true,
-            default: false,
-        },
-        promotion: {
-            type: String,
-            required: true,
-            enum: ["liege", "bruxelles"],
-        },
+        // first_name: {
+        //     type: String,
+        //     lowercase: true,
+        //     trim: true,
+        //     required: true,
+        // },
+        // last_name: {
+        //     type: String,
+        //     lowercase: true,
+        //     trim: true,
+        //     required: true,
+        // },
+        // username: {
+        //     type: String,
+        //     lowercase: true,
+        //     required: true,
+        //     unique: true,
+        // },
+        // password: {
+        //     type: String,
+        //     select: false,
+        //     required: true,
+        // },
+        // is_admin: {
+        //     type: Boolean,
+        //     required: true,
+        //     default: false,
+        // },
+        // promotion: {
+        //     type: String,
+        //     required: true,
+        //     enum: ["liege", "bruxelles"],
+        // },
     },
     {
         timestamps: {createdAt: "created_at"},
@@ -61,6 +61,6 @@ const UserSchema = new Schema(
 //     },
 // };
 
-UserSchema.plugin(passportLocalMongoose);
+User.plugin(passportLocalMongoose);
 
-module.exports = mongoose.model("User", UserSchema);
+module.exports = mongoose.model("User", User);
