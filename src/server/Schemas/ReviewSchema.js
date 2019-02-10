@@ -5,7 +5,8 @@ const ReviewSchema = new Schema(
     {
         note: {
             type: Number,
-            enum: [0, 1, 2, 3, 4, 5],
+            min: [0, "note must be a value between 0 and 5"],
+            max: [5, "note must be a value between 0 and 5"],
             required: true,
         },
         comment: {

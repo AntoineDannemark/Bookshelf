@@ -21,9 +21,7 @@ const store = (req, res) => {
 
         _r.save(err => {
             if (err) {
-                res.status(500).json({
-                    text: "server error 500 @ save review ",
-                });
+                res.status(500).send(err);
             } else {
                 res.status(200).json({
                     text: "New Review Created",

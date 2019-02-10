@@ -1,3 +1,7 @@
+const passport = require("passport");
+// const passportLocal = require("passport-local");
+
+const AuthController = require("./Controllers/AuthController");
 const UserController = require("./Controllers/UserController");
 const BookController = require("./Controllers/BookController");
 const ReviewController = require("./Controllers/ReviewController");
@@ -5,24 +9,25 @@ const ReviewController = require("./Controllers/ReviewController");
 const Review = require("./Schemas/ReviewSchema");
 
 module.exports = function(app) {
+    app.post("/login", passport.authenticate("local"), AuthController.login);
+
     app.get("/users", UserController.index);
     app.get("/users/:id", UserController.show);
-    app.delete("/users/:id", UserController.destroy);
-    app.patch("/users/:id", UserController.update);
     app.post("/users", UserController.store);
-    app.post("/users/login", UserController.login);
+    app.patch("/users/:id", UserController.update);
+    app.delete("/users/:id", UserController.destroy);
 
     app.get("/books", BookController.index);
     app.get("/books/:id", BookController.show);
-    app.delete("/books/:id", BookController.destroy);
-    app.patch("/books/:id", BookController.update);
     app.post("/books", BookController.store);
+    app.patch("/books/:id", BookController.update);
+    app.delete("/books/:id", BookController.destroy);
 
     app.get("/reviews", ReviewController.index);
     app.get("/reviews/:id", ReviewController.show);
-    app.delete("/reviews/:id", ReviewController.destroy);
-    app.patch("/reviews/:id", ReviewController.update);
     app.post("/reviews", ReviewController.store);
+    app.patch("/reviews/:id", ReviewController.update);
+    app.delete("/reviews/:id", ReviewController.destroy);
 
     app.get("/test", (req, res) => {
         Review.find()

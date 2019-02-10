@@ -1,8 +1,9 @@
-const mongoose = require("mongoose");
-const bcrypt = require("bcrypt");
-const jwt = require("jwt-simple");
-const config = require("../config/config");
-const Schema = mongoose.Schema;
+let mongoose = require("mongoose"),
+    Schema = mongoose.Schema,
+    passportLocalMongoose = require("passport-local-mongoose");
+// const bcrypt = require("bcrypt");
+// const jwt = require("jwt-simple");
+// const config = require("../config/config");
 
 const UserSchema = new Schema(
     {
@@ -45,19 +46,21 @@ const UserSchema = new Schema(
     },
 );
 
-UserSchema.methods = {
-    authenticate: function(password, next) {
-        bcrypt.compare(password, this.password, (err, result) => {
-            if (err) {
-                throw err;
-            }
-            next(result);
-        });
-    },
+// UserSchema.methods = {
+//     authenticate: function(password, next) {
+//         bcrypt.compare(password, this.password, (err, result) => {
+//             if (err) {
+//                 throw err;
+//             }
+//             next(result);
+//         });
+//     },
 
-    getToken: function() {
-        return jwt.encode(this, config.secret);
-    },
-};
+//     getToken: function() {
+//         return jwt.encode(this, config.secret);
+//     },
+// };
+
+UserSchema.plugin(passportLocalMongoose);
 
 module.exports = mongoose.model("User", UserSchema);
