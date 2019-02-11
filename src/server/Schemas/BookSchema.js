@@ -27,6 +27,10 @@ const BookSchema = new Schema(
             enum: ["printed", "ebook"],
             required: true,
         },
+        moncul: {
+            required: true,
+            type: String,
+        },
         owner: [
             {
                 type: mongoose.Schema.Types.ObjectId,

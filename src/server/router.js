@@ -1,5 +1,4 @@
 const passport = require("passport");
-// const LocalStrategy = require("passport-local").Strategy;
 
 const express = require("express");
 const router = new express.Router();
@@ -30,57 +29,29 @@ router.post("/register", (req, res, next) => {
                 return next(err);
             }
             console.log("t'es dans la base gros User!");
-
             res.redirect("/");
         },
     );
 });
 
-// router.get("/login", (req, res) {
-//      res.redirect("/");
-//      res.send("not logged in");
-// });
-
-// router.post(
-//     "/login",
-//     passport.authenticate("local", {
-//         successRedirect: "/api/home",
-//         failureRedirect: "/api/login",
-//     }),
-//     UserController.index,
-// );
-
-// router.post("/login", (req, res, next) => {
-//     passport.authenticate("local", (err, user, info) => {
-//         if (err) {
-//             return next(err);
-//         }
-//         if (user) {
-//             // ...
-//             req.login(user, error => {
-//                 if (error) {
-//                     return next(error);
-//                 }
-//                 return res.send(userdata);
-//             });
-//         } else {
-//             return res
-//                 .status(401)
-//                 .send({error: "There was an error logging in"});
-//         }
-//     })(req, res, next);
-// });
-
-router.post("/login", passport.authenticate("local"), (req, res) => {
-    res.redirect("/");
-});
+router.post(
+    "/login",
+    passport.authenticate("local", {
+        successRedirect: "/api/books",
+        failureRedirect: "/api/login",
+    }),
+);
 
 router.get("/logout", (req, res) => {
-    req.logout();
+    req.logOut();
     console.log("zyva dégage gros User");
-    res.redirect("/");
+    req.session.destroy(err => {
+        if (err) {
+            throw err;
+        }
+        res.redirect("/");
+    });
 });
-// router.post("/login", passport.authenticate("local"), AuthController.login);
 
 router.get("/users", UserController.index);
 router.get("/users/:id", UserController.show);
@@ -105,7 +76,6 @@ router.get("/test", (req, res) => {
         .select("book note comment owner")
         .populate("book", "title author")
         .populate("owner", "first_name last_name promotion")
-        // .exec()
         .then(docs => {
             res.status(200).send({
                 count: docs.length,
