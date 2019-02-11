@@ -5,20 +5,20 @@ import {Route, BrowserRouter as Router, Switch} from "react-router-dom";
 // import App from "./app";
 import Home from "./components/Home";
 import EnteteAddBook from "./components/EnteteAddBook";
+import errorPage from "";
 
-class Routing extends React.Component {
+class App extends React.Component {
     render() {
         return (
             <Router>
-                <div>
-                    <Switch>
-                        <Route exact path="/" component={Home} />
-                        <Route path="/add" component={EnteteAddBook} />
-                    </Switch>
-                </div>
+                <Switch>
+                    <Route exact path="/" component={Home} />
+                    <Route exact path="/add" component={EnteteAddBook} />
+                    <Route component={errorPage} />
+                </Switch>
             </Router>
         );
     }
 }
 
-ReactDOM.render(<Routing />, document.getElementById("app"));
+ReactDOM.render(<App />, document.getElementById("app"));
