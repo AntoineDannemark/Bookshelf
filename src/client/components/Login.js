@@ -4,6 +4,8 @@ import Logo from "./Logo";
 import Slogan from "./Slogan";
 import Logform from "./Logform";
 
+import axios from "axios";
+
 import "../../styles/style.css";
 
 class Login extends React.Component {
@@ -15,7 +17,8 @@ class Login extends React.Component {
             errors: {},
         };
         this.onChange = this.onChange.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
+        this.handleClick = this.handleClick.bind(this);
+        this.getUsers = this.getUsers.bind(this);
     }
 
     onChange = e => {
@@ -24,8 +27,10 @@ class Login extends React.Component {
         });
     };
 
-    onSubmit = e => {
+    handleClick = e => {
         e.preventDefault();
+        e.stopPropagation();
+        e.nativeEvent.stopImmediatePropagation();
 
         const userData = {
             username: this.state.username,
@@ -33,6 +38,36 @@ class Login extends React.Component {
         };
 
         console.log(userData);
+
+        axios
+            .post("http://localhost/api/login", userData)
+            .then(res => {
+                if (res.data) {
+                    console.log(res.session);
+                } else {
+                    console.log("Login failed");
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    };
+
+    getUsers = e => {
+        e.preventDefault();
+
+        axios
+            .get("http://localhost/api/users")
+            .then(res => {
+                if (res.data) {
+                    console.log(res.data);
+                } else {
+                    console.log("Login failed");
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            });
     };
 
     render() {
@@ -42,7 +77,8 @@ class Login extends React.Component {
                 <Slogan />
                 <Logform
                     onChange={() => this.onChange}
-                    onSubmit={() => this.onSubmit}
+                    handleClick={() => this.handleClick}
+                    getUsers={() => this.getUsers}
                     errors={this.state.errors}
                 />
             </div>

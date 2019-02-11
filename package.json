@@ -13,7 +13,7 @@
     "work:client": "npx webpack-dev-server --env=dev --hot --progress",
     "build": "npm run build:server && npm run build:client"
   },
-  "proxy": "http://localhost:80/", 
+  "proxy": "http://localhost:80/",
   "lint-staged": {
     "*.js": [
       "npx eslint --fix --cache",
@@ -52,7 +52,9 @@
     "axios": "^0.18.0",
     "bcrypt": "^3.0.4",
     "body-parser": "^1.18.3",
+    "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.3",
+    "cors": "^2.8.5",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
     "g": "^2.0.1",

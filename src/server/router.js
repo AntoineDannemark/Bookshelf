@@ -16,14 +16,19 @@ router.get("/", (req, res) => {
 });
 
 router.post("/register", AuthController.register);
-router.post("/login", AuthController.login);
+
+router.post(
+    "/login",
+    passport.authenticate("local", {
+        failureRedirect: "/api/login",
+    }),
+    AuthController.sendRes,
+);
+
 router.get("/logout", AuthController.logout);
 
-router.get(
-    "/users",
-    passport.authenticate("local", {failureRedirect: "/login"}),
-    UserController.index,
-);
+router.get("/users", UserController.index);
+
 router.get(
     "/users/:id",
     passport.authenticate("local", {failureRedirect: "/login"}),
