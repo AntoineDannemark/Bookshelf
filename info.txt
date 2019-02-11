@@ -1,0 +1,24 @@
+Le docker-compose up ne fonctionnera pas à cause du port 80 monopolisé par Apache, pour remédier à ce problème,
+entrer sudo /etc/init.d/apache2 stop dans le terminal OU solution définitive: sudo apt-get remove apache2
+
+Pour travailler le codage côté client, il faut entrer npm run work:client et ouvrir le site sur localhost:8080
+
+npm run build:client pour builder 1 seule fois
+npm run work:client pour rebuilder à chaque sauvegarde (localhost 8080)
+pour le côté serveur: ->
+npm run work:server 
+npm run build:server
+
+npm run build fait les 2 builds
+
+Pour la css: installer npm install css-loader style-loader --save-dev
+
+attention couper work:server avant chaque merge
+
+pour trouver le fichier qui pose problème: npx eslint nomdufichier.qqch
+
+site what the font cherche les polices utilisées dans les images
+idem avec extension whatfont
+
+pour travailler avec SASS -> npm install node-sass et npm install node-sass
+
