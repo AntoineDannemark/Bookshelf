@@ -45,8 +45,9 @@ const store = (req, res) => {
             () => {
                 let _b = new Book(book);
 
-                _b.save(conErr => {
-                    if (conErr) {
+                _b.save(err => {
+                    if (err) {
+                        console.log(err);
                         res.status(500).json({
                             text: "server error 500 @ findBook.then.save ",
                         });

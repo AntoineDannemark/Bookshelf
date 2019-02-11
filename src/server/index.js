@@ -1,6 +1,5 @@
 import express from "express";
 import path from "path";
-// const favicon = require("serve-favicon");
 const logger = require("morgan");
 const cookieParser = require("cookie-parser");
 const expressSession = require("express-session");
@@ -11,7 +10,6 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 
 const app = express();
-// const router = new express.Router();
 const {APP_PORT} = process.env;
 
 app.use(logger("dev"));
@@ -37,13 +35,13 @@ app.use(express.static(path.resolve(__dirname, "../../bin/client")));
 
 const User = require("./Schemas/UserSchema");
 
-passport.use(new LocalStrategy(User.authenticate()));
+passport.use(new LocalStrategy({usernameField: "email"}, User.authenticate()));
+
 // passport.use(
 //     new LocalStrategy(
-//         // {
-//         //     usernameField: "email",
-//         //     passwordField: "password",
-//         // },
+//         {
+//             usernameField: "email",
+//         },
 //         (username, password, done) => {
 //             User.findOne({username: username}, (err, user) => {
 //                 if (err) {
@@ -66,48 +64,6 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-/* MONGOOSE CONNECTION
---------------------------
-=> Stock credentials in ENV  !
-=> Require ext to clean code ?
-=> check Leny  vs. :
-----------------------------
-
-mongoose.connect("mongodb://dev:dev@mongo:27017/Bookshelf?authSource=admin", function(err) {
-  if (err) {
-    console.log("Shit happened!");
-  }
-});
-
------------------
-INSERT ROUTER HERE
------------------
-
-// error handlers
-
-// development error handler
-// will print stacktrace
-if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: err
-    });
-  });
-}
-
-// production error handler
-// no stacktraces leaked to user
-app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-  res.render('error', {
-    message: err.message,
-    error: {}
-  });
-});
-*/
-
 mongoose
     .connect(
         "mongodb://dev:dev@mongo:27017/Bookshelf?authSource=admin",
@@ -125,19 +81,11 @@ mongoose
 
 mongoose.Promise = global.Promise;
 
-// Cross-Origin Resource Sharing (CORS)
-// REQUIRE EXTERNAL MIDDLEWARE TO CLEAN CODE ??
 app.use((req, res, next) => {
-    // Access-Control-Allow-Headers
-    // ----------------------------
-    // Provides a comma separated list of request header values the server is willing to support. If you use
-    // custom headers (eg. x-authentication-token you need to return it in this ACA header response to
-    // OPTIONS call, otherwise the request will be blocked.
     res.setHeader(
         "Access-Control-Allow-Headers",
         "X-Requested-With,content-type",
     );
-
     // Access-Control-Allow-Origin
     // ---------------------------
     // This header is meant to be returned by the server, and indicate what client-domains are allowed
@@ -147,27 +95,14 @@ app.use((req, res, next) => {
     // !! If you require the client to pass authentication headers (e.g. cookies) the value can not be "*"
     // it must be a fully qualified domain!
     res.setHeader("Access-Control-Allow-Origin", "*");
-
-    // Access-Control-Allow-Methods
-    // A comma separated list of HTTP request type verbs (eg. GET, POST) which the server is
-    // willing to support.
     res.setHeader(
         "Access-Control-Allow-Methods",
         "GET, POST, PUT, PATCH, DELETE",
     );
-    // Access-Control-Allow-Credentials
-    // --------------------------------
-    // This header is only required to be present in the response if your server supports authentication
-    // via cookies. The only valid value for this case is true.
     res.setHeader("Access-Control-Allow-Credentials", true);
     next();
 });
 
-// Register Routes
-// ---------------
-// Check Leny best practice + (router) ??
-// require(`${__dirname}/router`)(router);
-// app.use("/api", router);
 app.use("/api", require("./router"));
 
 app.listen(APP_PORT, () =>

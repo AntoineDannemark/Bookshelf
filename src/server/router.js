@@ -3,73 +3,78 @@ const passport = require("passport");
 const express = require("express");
 const router = new express.Router();
 
+const AuthController = require("./Controllers/AuthController");
+const UserController = require("./Controllers/UserController");
 const BookController = require("./Controllers/BookController");
 const ReviewController = require("./Controllers/ReviewController");
-const UserController = require("./Controllers/UserController");
 
 const Review = require("./Schemas/ReviewSchema");
 
-const User = require("./Schemas/UserSchema");
-
 router.get("/", (req, res) => {
     console.log(req.user);
-    res.send("YOLES MECS", {user: req.user});
+    res.send("welcoume");
 });
 
-router.post("/register", (req, res, next) => {
-    console.log(
-        "Bonjour gros User, viens je vais essayer de te faire rentrer !",
-    );
-    User.register(
-        new User({username: req.body.username}),
-        req.body.password,
-        err => {
-            if (err) {
-                console.log("t'es trop gros User tu rentres pas!", err);
-                return next(err);
-            }
-            console.log("t'es dans la base gros User!");
-            res.redirect("/");
-        },
-    );
-});
+router.post("/register", AuthController.register);
+router.post("/login", AuthController.login);
+router.get("/logout", AuthController.logout);
 
-router.post(
-    "/login",
-    passport.authenticate("local", {
-        successRedirect: "/api/books",
-        failureRedirect: "/api/login",
-    }),
+router.get(
+    "/users",
+    passport.authenticate("local", {failureRedirect: "/login"}),
+    UserController.index,
 );
-
-router.get("/logout", (req, res) => {
-    req.logOut();
-    console.log("zyva dégage gros User");
-    req.session.destroy(err => {
-        if (err) {
-            throw err;
-        }
-        res.redirect("/");
-    });
-});
-
-router.get("/users", UserController.index);
-router.get("/users/:id", UserController.show);
-// router.post("/users", UserController.store);
-router.patch("/users/:id", UserController.update);
-router.delete("/users/:id", UserController.destroy);
+router.get(
+    "/users/:id",
+    passport.authenticate("local", {failureRedirect: "/login"}),
+    UserController.show,
+);
+router.patch(
+    "/users/:id",
+    passport.authenticate("local", {failureRedirect: "/login"}),
+    UserController.update,
+);
+router.delete(
+    "/users/:id",
+    passport.authenticate("local", {failureRedirect: "/login"}),
+    UserController.destroy,
+);
 
 router.get("/books", BookController.index);
 router.get("/books/:id", BookController.show);
-router.post("/books", BookController.store);
-router.patch("/books/:id", BookController.update);
-router.delete("/books/:id", BookController.destroy);
+router.post(
+    "/books",
+    passport.authenticate("local", {failureRedirect: "/login"}),
+    BookController.store,
+);
+router.patch(
+    "/books/:id",
+    passport.authenticate("local", {failureRedirect: "/login"}),
+    BookController.update,
+);
+router.delete(
+    "/books/:id",
+    passport.authenticate("local", {failureRedirect: "/login"}),
+    BookController.destroy,
+);
 
 router.get("/reviews", ReviewController.index);
 router.get("/reviews/:id", ReviewController.show);
-router.post("/reviews", ReviewController.store);
-router.patch("/reviews/:id", ReviewController.update);
-router.delete("/reviews/:id", ReviewController.destroy);
+router.post(
+    "/reviews",
+    passport.authenticate("local", {failureRedirect: "/login"}),
+    ReviewController.store,
+);
+router.patch(
+    "/reviews/:id",
+    passport.authenticate("local", {failureRedirect: "/login"}),
+    ReviewController.update,
+);
+router.delete(
+    "/reviews/:id",
+    passport.authenticate("local", {failureRedirect: "/login"}),
+    ReviewController.destroy,
+);
 
 router.get("/test", (req, res) => {
     Review.find()

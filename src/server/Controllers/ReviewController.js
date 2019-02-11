@@ -1,12 +1,7 @@
 const Review = require("../Schemas/ReviewSchema");
 
 const store = (req, res) => {
-    if (
-        !req.body.note ||
-        !req.body.comment ||
-        !req.body.book ||
-        !req.body.owner
-    ) {
+    if (!req.body.note || !req.body.comment || !req.body.book || !req.user) {
         res.status(400).json({
             text: "Wrong Request",
         });
@@ -15,7 +10,7 @@ const store = (req, res) => {
             note: req.body.note,
             comment: req.body.comment,
             book: req.body.book,
-            owner: req.body.owner,
+            owner: req.user,
         };
         let _r = new Review(review);
 
