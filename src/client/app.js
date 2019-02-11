@@ -1,22 +1,24 @@
-/* becodeorg/bookshelf
- *
- * /src/client/app.js - Client entry point
- *
- * coded by leny@BeCode
- * started at 18/01/2019
- */
+import React from 'react'
+import ReactDOM from 'react-dom'
+import '../styles/style.css'
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
+import App from './app'
+import Home from './components/Home'
+import EnteteAddBook from './components/EnteteAddBook'
 
-import * as React from "react";
-import ReactDOM from "react-dom";
-import Home from "./components/Home";
-import {BrowserRouter as Router, Route, Link} from "react-router-dom";
-import "../styles/style.css";
+class Routing extends React.Component {
+  render(){
+    return(
+  <Router>
+    <div>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/add" component={EnteteAddBook} />
+       </Switch>
+    </div>
+  </Router>
+    )
+  }
+}
 
-ReactDOM.render(
-    <Router>
-        <div>
-            <Home />
-        </div>
-    </Router>,
-    document.querySelector("#app"),
-);
+ReactDOM.render(<Routing />, document.getElementById("app"))
