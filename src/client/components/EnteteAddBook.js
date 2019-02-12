@@ -1,12 +1,10 @@
-import React, {Component} from 'react';
+import React, {Component} from "react";
 class EnteteAddBook extends Component {
-    render(){
-        return(
-                <div>
-                    <p className="library">
-                        Ajouter un livre
-                    </p>
-                </div>
+    render() {
+        return (
+            <div>
+                <p className="library">{"Ajouter un livre"}</p>
+            </div>
         );
     }
 }

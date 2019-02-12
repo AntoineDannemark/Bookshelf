@@ -1,12 +1,10 @@
-import React, {Component} from 'react';
+import React, {Component} from "react";
 class EnteteWriteReview extends Component {
-    render(){
-        return(
-                <div>
-                    <p className="library">
-                        Rechercher un livre
-                    </p>
-                </div>
+    render() {
+        return (
+            <div>
+                <p className="library">{"Ecrire une revue"}</p>
+            </div>
         );
     }
 }

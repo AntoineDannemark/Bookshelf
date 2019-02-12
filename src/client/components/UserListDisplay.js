@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
+import React, {Component} from "react";
 class UserListDisplay extends Component {
-    render(){
-        return(
+    render() {
+        return (
             <div>
-                {/* TODO faire une liste déroulante des utilisateurs */}
+                <p className="white">{"Liste de tous les users"}</p>
             </div>
         );
     }

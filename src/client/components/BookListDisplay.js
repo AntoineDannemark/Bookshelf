@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
+import React, {Component} from "react";
 class BookListDisplay extends Component {
-    render(){
-        return(
+    render() {
+        return (
             <div>
-                {/* TODO faire une lisre déroulante des livres dispo */}
+                <p className="white">{"liste de tous les livres"}</p>
             </div>
         );
     }
