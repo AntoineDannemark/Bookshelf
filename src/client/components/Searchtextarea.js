@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
+import React, {Component} from "react";
 class Searchtextarea extends Component {
-    render(){
-        return(
-        <div>
-           {/* TODO create textarea + submit button */}
-        </div>
+    render() {
+        return (
+            <div>
+                <p className="white"> {"create textarea"} </p>
+            </div>
         );
     }
 }

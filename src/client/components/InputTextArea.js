@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
+import React, {Component} from "react";
 class InputTextArea extends Component {
-    render(){
-        return(
+    render() {
+        return (
             <div>
-                <input type="text" placeholder= 'Your password' />
+                <input type="text" />
             </div>
         );
     }
