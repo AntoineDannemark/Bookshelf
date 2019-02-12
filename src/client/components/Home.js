@@ -1,11 +1,11 @@
-import React, {Component} from "react";
-// import {Route, Link} from "react-router-dom";
+import React from "react";
+
 import "../../styles/style.css";
 import Logo from "./Logo";
 import Slogan from "./Slogan";
 import Logform from "./Logform";
 
-class Home extends Component {
+class Home extends React.Component {
     render() {
         return (
             <div>
