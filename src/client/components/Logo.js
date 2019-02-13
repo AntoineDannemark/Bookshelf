@@ -1,10 +1,12 @@
-import React, {Component} from 'react';
+import React, {Component} from "react";
+const logo = require("../../styles/images/bshelf2.png");
+
 class Logo extends Component {
-    render(){
-        return(
-        <div className='logo'>
-            <img src={require("../../styles/images/bshelf2.png")} />
-        </div>
+    render() {
+        return (
+            <div className="logo">
+                <img src={logo} />
+            </div>
         );
     }
 }

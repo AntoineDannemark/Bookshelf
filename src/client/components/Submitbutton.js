@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, {Component} from "react";
 class Submitbutton extends Component {
     render() {
@@ -12,4 +13,14 @@ class Submitbutton extends Component {
         );
     }
 }
+=======
+import React from "react";
+
+const Submitbutton = () => (
+    <div className="positionrelative">
+        <input className="logsubmitbutton" type="submit" />
+    </div>
+);
+
+>>>>>>> pull_antoine
 export default Submitbutton;

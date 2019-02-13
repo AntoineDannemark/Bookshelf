@@ -1,16 +1,16 @@
-import React, {Component} from 'react';
-import Submitbutton from './Submitbutton';
-import Inputsignin from './Inputsignin';
-class Logform extends Component {
-    render(){
-        return(
-            <div className='logformbackground'>
-                <form className='logform' onSubmit={this.handleSubmit}>
-                    <Inputsignin />
-                    <Submitbutton />
-                </form>
-            </div>
-        );
-    }
-}
+import React from "react";
+
+// import Submitbutton from "./Submitbutton";
+import Inputsignin from "./InputSignIn";
+
+const Logform = ({onChange, onSubmit, errors}) => (
+    <div className="logformbackground">
+        <form className="logform" onSubmit={onSubmit}>
+            <Inputsignin onChange={onChange} errors={errors} />
+            <button type="submit">{"SUBMIT"}</button>
+            {/* <Submitbutton  /> */}
+        </form>
+    </div>
+);
+
 export default Logform;

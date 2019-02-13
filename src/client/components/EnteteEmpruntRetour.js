@@ -1,12 +1,10 @@
-import React, {Component} from 'react';
+import React, {Component} from "react";
 class DisplayResearchResult extends Component {
-    render(){
-        return(
-                <div>
-                    <p className="library">
-                        Emprunt/Retour de livre
-                    </p>
-                </div>
+    render() {
+        return (
+            <div>
+                <p className="library">{"Emprunt/Retour de livre"}</p>
+            </div>
         );
     }
 }
