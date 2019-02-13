@@ -10,6 +10,7 @@ import BookRemovePage from "./components/pages/RemoveBookPage";
 import RemoveUserPage from "./components/pages/RemoveUserPage";
 import Reviewpage from "./components/pages/ReviewPage";
 import SearchPage from "./components/pages/Searchpage";
+import Navbar from "./components/navbar/Navbar";
 
 import "../styles/style.css";
 
@@ -27,6 +28,7 @@ class App extends Component {
                     <Route path="/removeuser" component={RemoveUserPage} />
                     <Route path="/review" component={Reviewpage} />
                     <Route path="/search" component={SearchPage} />
+                    <Route path="/navbar" component={Navbar} />
                     <Route component={NotFound} />
                 </Switch>
             </div>

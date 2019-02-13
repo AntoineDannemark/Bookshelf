@@ -9,11 +9,19 @@ class AddBookPage extends Component {
         return (
             <div>
                 <EnteteAddBook />
+                {/* titre livre */}
                 <InputTextArea />
+                {/* ISBN */}
                 <InputTextArea />
+                {/* Nom auteur */}
                 <InputTextArea />
+                {/* Prenom auteur */}
                 <InputTextArea />
+                {/* Text language */}
                 <InputTextArea />
+                {/* Format de livre */}
+                <InputTextArea />
+                {/* Propriétaire */}
                 <InputTextArea />
                 <SubmitButton />
             </div>

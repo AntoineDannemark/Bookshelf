@@ -15,6 +15,7 @@ class Newuserpage extends React.Component {
                 <InputTextArea />
                 <InputTextArea />
                 <InputTextArea />
+                {/* TODO checkbox JR/Coach */}
                 <Submitbutton />
             </div>
         );
