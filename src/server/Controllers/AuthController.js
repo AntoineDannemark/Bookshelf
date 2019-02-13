@@ -30,9 +30,41 @@ const register = (req, res, next) => {
     }
 };
 
-// const login = (req, res, next) => {
-
-// };
+const login = function(req, res) {
+    if (!req.body.email || !req.body.password) {
+        res.status(400).json({
+            text: "Both email and password must be filled",
+        });
+    } else {
+        User.findOne(
+            {
+                email: req.body.email,
+            },
+            function(err, user) {
+                user.authenticate(req.body.password, function(isChecked) {
+                    if (err) {
+                        res.status(500).json({
+                            text: "Server Error",
+                        });
+                    } else if (!user) {
+                        res.status(401).json({
+                            text: "The user does not exist",
+                        });
+                    } else if (isChecked) {
+                        res.status(200).json({
+                            // token: user.getToken(),
+                            text: "Successfuly authenticated",
+                        });
+                    } else {
+                        res.status(401).json({
+                            text: "Wrong Password",
+                        });
+                    }
+                });
+            },
+        );
+    }
+};
 
 // const logout = (req, res) => {
 //     req.logout();
@@ -43,8 +75,6 @@ const register = (req, res, next) => {
 //         res.redirect("/");
 //     });
 // };
-
-
 
 const logout = (req, res, next) => {
     if (req.session) {
@@ -58,6 +88,6 @@ const logout = (req, res, next) => {
     }
 };
 
-// exports.login = login;
+exports.login = login;
 exports.register = register;
 exports.logout = logout;

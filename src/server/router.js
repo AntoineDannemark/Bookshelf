@@ -18,16 +18,8 @@ router.get("/", (req, res) => {
 
 router.post("/register", AuthController.register);
 
-router.post("/login", (req, res) => {
-    const user = {
-        email: req.body.email,
-        password: req.body.password
-    };
-    
-    jwt.sign(   )
-});
+router.post("/login", AuthController.login);
 
-// router.post("/login", AuthController.login);
 router.get("/logout", AuthController.logout);
 
 router.get("/users", Middlewares.requiresLogin, UserController.index);
