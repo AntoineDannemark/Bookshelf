@@ -2,12 +2,10 @@ import express from "express";
 import path from "path";
 const logger = require("morgan");
 const cookieParser = require("cookie-parser");
-const expressSession = require("express-session");
+// const expressSession = require("express-session");
 const bodyParser = require("body-parser");
 
 const mongoose = require("mongoose");
-const passport = require("passport");
-const LocalStrategy = require("passport-local").Strategy;
 
 const app = express();
 const {APP_PORT} = process.env;
@@ -19,50 +17,19 @@ app.use(
         extended: false,
     }),
 );
+
 app.use(cookieParser());
+
 // TODO add env variable
-app.use(
-    expressSession({
-        secret: process.env.SESSION_SECRET || "secret",
-        resave: false,
-        saveUninitialized: false,
-    }),
-);
-
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(express.static(path.resolve(__dirname, "../../bin/client")));
-
-const User = require("./Schemas/UserSchema");
-
-passport.use(new LocalStrategy({usernameField: "email"}, User.authenticate()));
-
-// passport.use(
-//     new LocalStrategy(
-//         {
-//             usernameField: "email",
-//         },
-//         (username, password, done) => {
-//             User.findOne({username: username}, (err, user) => {
-//                 if (err) {
-//                     return done(err);
-//                 }
-//                 if (!user) {
-//                     console.log("Wrong username");
-//                     return done(null, false);
-//                 }
-//                 if (!user.validPassword(password)) {
-//                     console.log("Wrong password");
-//                     return done(null, false);
-//                 }
-//                 return done(null, user);
-//             });
-//         },
-//     ),
+// app.use(
+//     expressSession({
+//         secret: process.env.SESSION_SECRET || "secret",
+//         resave: false,
+//         saveUninitialized: false,
+//     }),
 // );
 
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+app.use(express.static(path.resolve(__dirname, "../../bin/client")));
 
 mongoose
     .connect(

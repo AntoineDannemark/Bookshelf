@@ -1,5 +1,3 @@
-const passport = require("passport");
-
 const express = require("express");
 const router = new express.Router();
 
@@ -16,70 +14,25 @@ router.get("/", (req, res) => {
 });
 
 router.post("/register", AuthController.register);
-
-router.post(
-    "/login",
-    passport.authenticate("local", {
-        failureRedirect: "/api/login",
-    }),
-    AuthController.sendRes,
-);
-
+// router.post("/login", AuthController.login);
 router.get("/logout", AuthController.logout);
 
 router.get("/users", UserController.index);
-
-router.get(
-    "/users/:id",
-    passport.authenticate("local", {failureRedirect: "/login"}),
-    UserController.show,
-);
-router.patch(
-    "/users/:id",
-    passport.authenticate("local", {failureRedirect: "/login"}),
-    UserController.update,
-);
-router.delete(
-    "/users/:id",
-    passport.authenticate("local", {failureRedirect: "/login"}),
-    UserController.destroy,
-);
+router.get("/users/:id", UserController.show);
+router.patch("/users/:id", UserController.update);
+router.delete("/users/:id", UserController.destroy);
 
 router.get("/books", BookController.index);
 router.get("/books/:id", BookController.show);
-router.post(
-    "/books",
-    passport.authenticate("local", {failureRedirect: "/login"}),
-    BookController.store,
-);
-router.patch(
-    "/books/:id",
-    passport.authenticate("local", {failureRedirect: "/login"}),
-    BookController.update,
-);
-router.delete(
-    "/books/:id",
-    passport.authenticate("local", {failureRedirect: "/login"}),
-    BookController.destroy,
-);
+router.post("/books", BookController.store);
+router.patch("/books/:id", BookController.update);
+router.delete("/books/:id", BookController.destroy);
 
 router.get("/reviews", ReviewController.index);
 router.get("/reviews/:id", ReviewController.show);
-router.post(
-    "/reviews",
-    passport.authenticate("local", {failureRedirect: "/login"}),
-    ReviewController.store,
-);
-router.patch(
-    "/reviews/:id",
-    passport.authenticate("local", {failureRedirect: "/login"}),
-    ReviewController.update,
-);
-router.delete(
-    "/reviews/:id",
-    passport.authenticate("local", {failureRedirect: "/login"}),
-    ReviewController.destroy,
-);
+router.post("/reviews", ReviewController.store);
+router.patch("/reviews/:id", ReviewController.update);
+router.delete("/reviews/:id", ReviewController.destroy);
 
 router.get("/test", (req, res) => {
     Review.find()

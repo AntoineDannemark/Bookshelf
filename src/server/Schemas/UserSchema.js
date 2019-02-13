@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const passportLocalMongoose = require("passport-local-mongoose");
 // const bcrypt = require("bcrypt");
 // const jwt = require("jwt-simple");
 // const config = require("../config/config");
@@ -38,7 +37,5 @@ const UserSchema = new Schema(
         timestamps: {createdAt: "created_at"},
     },
 );
-
-UserSchema.plugin(passportLocalMongoose);
 
 module.exports = mongoose.model("User", UserSchema);
