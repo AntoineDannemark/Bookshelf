@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const bcrypt = require("bcrypt");
 
+
 const UserSchema = new Schema(
     {
         email: {
@@ -65,9 +66,17 @@ UserSchema.methods = {
         // return true;
         // return passwordHash.verify(password, this.password);
     },
+    // getToken: function() {
+    //     return jwt.encode(this, config.secret);
+    // },
     getToken: function() {
-        return jwt.encode(this, config.secret);
-    },
+        return jwt.sign({user: this.user}, config.secret, (err, token) => {
+            console.log(token);
+            res.json({
+                token: token,
+            })
+        })
+    }
 };
 
 module.exports = mongoose.model("User", UserSchema);

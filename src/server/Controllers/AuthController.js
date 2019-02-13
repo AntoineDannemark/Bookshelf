@@ -1,3 +1,6 @@
+const jwt = require("jsonwebtoken");
+const config = require("../lib/config");
+
 const User = require("../Schemas/UserSchema");
 
 const register = (req, res, next) => {
@@ -41,7 +44,7 @@ const login = function(req, res) {
                 email: req.body.email,
             },
             function(err, user) {
-                user.authenticate(req.body.password, function(isChecked) {
+                user.authenticate(req.body.password, isChecked => {
                     if (err) {
                         res.status(500).json({
                             text: "Server Error",
@@ -51,10 +54,14 @@ const login = function(req, res) {
                             text: "The user does not exist",
                         });
                     } else if (isChecked) {
-                        res.status(200).json({
-                            // token: user.getToken(),
-                            text: "Successfuly authenticated",
-                        });
+                        const payload = {
+                            user: user,
+                        };
+                        let token = jwt.sign(payload, config.secret);
+                        res.json({
+                            message: "Successfuly authenticated",
+                            token: token,
+                        })
                     } else {
                         res.status(401).json({
                             text: "Wrong Password",
@@ -82,7 +89,7 @@ const logout = (req, res, next) => {
             if(err) {
                 return next(err);
             } else {
-                return res.redirect('/');
+                return res.redirect('/users');
             }
         });
     }
