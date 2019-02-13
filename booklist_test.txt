@@ -1,6 +1,6 @@
 export const books = [
     {
-        name: "Design Ã©motionnel",
+        name: "Design Emotionnel",
         author: "Jeremy Keith",
         id: "9-782212-128611",
         language: "FR",

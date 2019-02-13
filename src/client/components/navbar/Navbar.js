@@ -1,6 +1,8 @@
 import React, {Component} from "react";
 import {Route, Link} from "react-router-dom";
 
+import "../../../styles/style.css";
+
 import Search from "../pages/Searchpage";
 import Review from "../pages/ReviewPage";
 import Adduser from "../pages/Newuserpage";
@@ -12,30 +14,30 @@ import Removebook from "../pages/RemoveBookPage";
 class Navbar extends Component {
     render() {
         return (
-            <div>
+            <div className="nav">
                 <ul>
                     <li>
-                        <Link to="/search">{"Recherche"}</Link>
+                        <Link to="/search">{"Recherche de livres"}</Link>
                     </li>
                     <li>
-                        <Link to="/review">{"Revue"}</Link>
+                        <Link to="/review">{"Ecrire une revue"}</Link>
                     </li>
-                    <ul>
-                        <li>
-                            <Link to="newuser"> {"Add user"} </Link>
-                        </li>
-                        <li>
-                            <Link to="removeuser"> {"Delete user"} </Link>
-                        </li>
-                    </ul>
+
+                    <li>
+                        <Link to="newuser"> {"Ajout utilisateur"} </Link>
+                    </li>
+                    <li>
+                        <Link to="removeuser"> {"Suppr. utilisateur"} </Link>
+                    </li>
+
                     <li>
                         <Link to="/movement">{"Mouvements"}</Link>
                     </li>
                     <li>
-                        <Link to="/addbook">{"Add book"}</Link>
+                        <Link to="/addbook">{"Ajout de livre"}</Link>
                     </li>
                     <li>
-                        <Link to="/removebook">{"Delete book"}</Link>
+                        <Link to="/removebook">{"Suppr. livre"}</Link>
                     </li>
                 </ul>
 
