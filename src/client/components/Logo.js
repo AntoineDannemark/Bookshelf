@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-const logo = require("../../styles/images/bshelf2.png");
+const logo = require("../../styles/images/bshelf600.png");
 
 class Logo extends Component {
     render() {

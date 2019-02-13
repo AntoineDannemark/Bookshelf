@@ -32,7 +32,7 @@ input {
 
 .library {
     font-family: 'Pacifico';
-    font-size: 80px;
+    font-size: 60px;
     text-align: center;
     color: white;
     margin: 30px 0px;
@@ -57,7 +57,7 @@ input {
 }
 
 .logo {
-    width: 803px;
+    width: 600px;
     margin: auto;
     top: 25px;
 }
