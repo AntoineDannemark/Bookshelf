@@ -2,9 +2,9 @@ import express from "express";
 import path from "path";
 const logger = require("morgan");
 const cookieParser = require("cookie-parser");
-// const expressSession = require("express-session");
+const session = require("express-session");
 const bodyParser = require("body-parser");
-
+// const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
 
 const app = express();
@@ -22,7 +22,7 @@ app.use(cookieParser());
 
 // TODO add env variable
 // app.use(
-//     expressSession({
+//     session({
 //         secret: process.env.SESSION_SECRET || "secret",
 //         resave: false,
 //         saveUninitialized: false,

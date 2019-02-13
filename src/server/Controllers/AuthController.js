@@ -30,6 +30,10 @@ const register = (req, res, next) => {
     }
 };
 
+// const login = (req, res, next) => {
+
+// };
+
 // const logout = (req, res) => {
 //     req.logout();
 //     req.session.destroy(err => {
@@ -39,6 +43,8 @@ const register = (req, res, next) => {
 //         res.redirect("/");
 //     });
 // };
+
+
 
 const logout = (req, res, next) => {
     if (req.session) {
@@ -52,6 +58,6 @@ const logout = (req, res, next) => {
     }
 };
 
-exports.login = login;
+// exports.login = login;
 exports.register = register;
 exports.logout = logout;
