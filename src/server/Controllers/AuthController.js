@@ -30,16 +30,28 @@ const register = (req, res, next) => {
     }
 };
 
-const logout = (req, res) => {
-    req.logout();
-    req.session.destroy(err => {
-        if (err) {
-            throw err;
-        }
-        res.redirect("/");
-    });
+// const logout = (req, res) => {
+//     req.logout();
+//     req.session.destroy(err => {
+//         if (err) {
+//             throw err;
+//         }
+//         res.redirect("/");
+//     });
+// };
+
+const logout = (req, res, next) => {
+    if (req.session) {
+        req.session.destroy(err => {
+            if(err) {
+                return next(err);
+            } else {
+                return res.redirect('/');
+            }
+        });
+    }
 };
 
-// exports.login = login;
+exports.login = login;
 exports.register = register;
 exports.logout = logout;
