@@ -1,9 +1,9 @@
 import React from "react";
-import "../../styles/style.css";
+import "../../../styles/style.css";
 
-import EnteteRemoveUser from "./EnteteRemoveUser";
-import UserListDisplay from "./UserListDisplay";
-import Submitbutton from "./Submitbutton";
+import EnteteRemoveUser from "../EnteteRemoveUser";
+import UserListDisplay from "../UserListDisplay";
+import Submitbutton from "../Submitbutton";
 
 class RemoveUserPage extends React.Component {
     render() {

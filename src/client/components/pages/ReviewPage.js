@@ -1,11 +1,11 @@
 import React from "react";
-import "../../styles/style.css";
+import "../../../styles/style.css";
 
-import EnteteWriteReview from "./EnteteWriteReview";
-import InputTextArea from "./InputTextArea";
-import BookListDisplay from "./BookListDisplay";
-import NoteSelect from "./NoteSelect";
-import Submitbutton from "./Submitbutton";
+import EnteteWriteReview from "../EnteteWriteReview";
+import InputTextArea from "../InputTextArea";
+import BookListDisplay from "../BookListDisplay";
+import NoteSelect from "../NoteSelect";
+import Submitbutton from "../Submitbutton";
 
 class ReviewPage extends React.Component {
     render() {
