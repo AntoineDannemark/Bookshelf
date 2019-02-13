@@ -2,7 +2,7 @@ const User = require("../Schemas/UserSchema");
 
 const register = (req, res, next) => {
     if (
-        !req.body.username ||
+        !req.body.email ||
         !req.body.password ||
         !req.body.first_name ||
         !req.body.last_name ||
@@ -12,22 +12,20 @@ const register = (req, res, next) => {
             text: "Wrong Request",
         });
     } else {
-        const user = {
+        const newUser = {
+            email: req.body.email,
+            password: req.body.password,
             first_name: req.body.first_name,
             last_name: req.body.last_name,
-            username: req.body.username,
-            password: req.body.password,
             promotion: req.body.promotion,
             is_admin: req.body.is_admin,
         };
 
-        User.register(new User(user), err => {
+        User.create(newUser, (err, user) => {
             if (err) {
-                console.log("t'es trop gros User tu rentres pas!", err);
                 return next(err);
             }
-            console.log("t'es dans la base gros User!");
-            res.redirect("/");
+            return next(user);
         });
     }
 };

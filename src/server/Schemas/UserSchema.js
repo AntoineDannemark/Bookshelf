@@ -6,9 +6,15 @@ const Schema = mongoose.Schema;
 
 const UserSchema = new Schema(
     {
-        local: {
-            email: String,
-            password: String,
+        email: {
+            type: String,
+            lowercase: true,
+            trim: true,
+            required: true,
+        },
+        password: {
+            type: String,
+            required: true,
         },
         first_name: {
             type: String,
