@@ -37,7 +37,6 @@ const logout = (req, res) => {
             throw err;
         }
         res.redirect("/");
-        console.log(req.user);
     });
 };
 

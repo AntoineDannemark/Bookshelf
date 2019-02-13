@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-// const bcrypt = require("bcrypt");
+const bcrypt = require("bcrypt");
 // const jwt = require("jwt-simple");
 // const config = require("../config/config");
 
@@ -43,5 +43,17 @@ const UserSchema = new Schema(
         timestamps: {createdAt: "created_at"},
     },
 );
+
+UserSchema.pre("save", function(next) {
+    const user = this;
+
+    bcrypt.hash(user.password, 10, (err, hash) => {
+        if (err) {
+            return next(err);
+        }
+        user.password = hash;
+        next();
+    });
+});
 
 module.exports = mongoose.model("User", UserSchema);
