@@ -3,16 +3,24 @@ import ReactDOM from "react-dom";
 import "../styles/style.css";
 import {Route, BrowserRouter as Router, Switch} from "react-router-dom";
 
-import AddBookPage from "./components/AddBookPage";
-import BookMovementPage from "./components/BookMovementPage";
+import AddBookPage from "./components/pages/AddBookPage";
+import BookMovementPage from "./components/pages/BookMovementPage";
 import Home from "./components/Home";
-import Newuserpage from "./components/Newuserpage";
-import RemoveBookPage from "./components/RemoveBookPage";
+import Newuserpage from "./components/pages/Newuserpage";
+import RemoveBookPage from "./components/page/RemoveBookPage";
 import RemoveUserPage from "./components/RemoveUserPage";
 import ReviewPage from "./components/ReviewPage";
 import Searchpage from "./components/Searchpage";
 
 class Routing extends React.Component {
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //         useremail: "",
+    //         userpassword: "",
+    //     };
+    //     this.handleClick = this.handleClick.bind(this);
+    // }
     render() {
         return (
             <Router>

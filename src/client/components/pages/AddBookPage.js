@@ -1,8 +1,8 @@
 import React, {Component} from "react";
 
-import EnteteAddBook from "./EnteteAddBook";
-import InputTextArea from "./InputTextArea";
-import SubmitButton from "./Submitbutton";
+import EnteteAddBook from "../EnteteAddBook";
+import InputTextArea from "../InputTextArea";
+import SubmitButton from "../Submitbutton";
 
 class AddBookPage extends Component {
     render() {

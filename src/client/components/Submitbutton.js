@@ -1,9 +1,13 @@
-import React, {Component} from 'react';
+import React, {Component} from "react";
 class Submitbutton extends Component {
-    render(){
-        return(
-            <div className='positionrelative'>
-                <input className='logsubmitbutton' type="submit" value="Submit" />
+    render() {
+        return (
+            <div className="positionrelative">
+                <input
+                    className="logsubmitbutton"
+                    type="submit"
+                    value="Submit"
+                />
             </div>
         );
     }

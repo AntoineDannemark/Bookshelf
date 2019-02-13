@@ -1,8 +1,8 @@
 import React from "react";
-import "../../styles/style.css";
-import EnteteNewUser from "./EnteteNewUser";
-import InputTextArea from "./InputTextArea";
-import Submitbutton from "./Submitbutton";
+import "../../../styles/style.css";
+import EnteteNewUser from "../EnteteNewUser";
+import InputTextArea from "../InputTextArea";
+import Submitbutton from "../Submitbutton";
 
 class Newuserpage extends React.Component {
     render() {
