@@ -1,7 +1,7 @@
 import React from "react";
 import "../../../styles/style.css";
 import DisplayResearchResult from "../DisplayResearchResult";
-import Enteterecherche from "../Enteterecherche";
+import Enteterecherche from "../entetes/Enteterecherche";
 import Searchtextarea from "../Searchtextarea";
 import Submitbutton from "../Submitbutton";
 

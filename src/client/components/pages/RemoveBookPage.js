@@ -1,7 +1,7 @@
 import React from "react";
 import "../../../styles/style.css";
 
-import EnteteRemoveBook from "../EnteteRemoveBook";
+import EnteteRemoveBook from "../entetes/EnteteRemoveBook";
 import BookListDisplay from "../BookListDisplay";
 import Submitbutton from "../Submitbutton";
 

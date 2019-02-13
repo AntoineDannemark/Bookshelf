@@ -1,7 +1,7 @@
 import React from "react";
 
 import Logo from "./Logo";
-import Slogan from "./Slogan";
+import Slogan from "./entetes/Slogan";
 import Logform from "./Logform";
 
 import "../../styles/style.css";

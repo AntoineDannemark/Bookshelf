@@ -1,7 +1,7 @@
 import React from "react";
 import "../../../styles/style.css";
 
-import EnteteRemoveUser from "../EnteteRemoveUser";
+import EnteteRemoveUser from "../entetes/EnteteRemoveUser";
 import UserListDisplay from "../UserListDisplay";
 import Submitbutton from "../Submitbutton";
 

@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 
-import EnteteAddBook from "../EnteteAddBook";
+import EnteteAddBook from "../entetes/EnteteAddBook";
 import InputTextArea from "../InputTextArea";
 import SubmitButton from "../Submitbutton";
 

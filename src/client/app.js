@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import {Route, Switch} from "react-router-dom";
 
 import Login from "./components/Login";
-import EnteteAddBook from "./components/EnteteAddBook";
 import NotFound from "./components/NotFound";
 import AddBookPage from "./components/pages/AddBookPage";
 import BookMovementPage from "./components/pages/BookMovementPage";
@@ -21,7 +20,6 @@ class App extends Component {
                 <Switch>
                     <Route exact path="/" component={Login} />
                     {/* <PrivateRoute exact path="/add" component={Add} /> */}
-                    <Route path="/add" component={EnteteAddBook} />
                     <Route path="/addbook" component={AddBookPage} />
                     <Route path="/movement" component={BookMovementPage} />
                     <Route path="/newuser" component={NewUserPage} />

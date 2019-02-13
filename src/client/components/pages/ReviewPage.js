@@ -1,7 +1,7 @@
 import React from "react";
 import "../../../styles/style.css";
 
-import EnteteWriteReview from "../EnteteWriteReview";
+import EnteteWriteReview from "../entetes/EnteteWriteReview";
 import InputTextArea from "../InputTextArea";
 import BookListDisplay from "../BookListDisplay";
 import NoteSelect from "../NoteSelect";
