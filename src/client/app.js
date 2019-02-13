@@ -1,36 +1,25 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React, {Component} from "react";
+import {Route, Switch} from "react-router-dom";
+
+import Login from "./components/Login";
+import EnteteAddBook from "./components/EnteteAddBook";
+import NotFound from "./components/NotFound";
+
 import "../styles/style.css";
-import {Route, BrowserRouter as Router, Switch} from "react-router-dom";
 
-import AddBookPage from "./components/AddBookPage";
-import BookMovementPage from "./components/BookMovementPage";
-import Home from "./components/Home";
-import Newuserpage from "./components/Newuserpage";
-import RemoveBookPage from "./components/RemoveBookPage";
-import RemoveUserPage from "./components/RemoveUserPage";
-import ReviewPage from "./components/ReviewPage";
-import Searchpage from "./components/Searchpage";
-
-class Routing extends React.Component {
+class App extends Component {
     render() {
         return (
-            <Router>
-                <div>
-                    <Switch>
-                        <Route exact path="/" component={Home} />
-                        <Route path="/addbook" component={AddBookPage} />
-                        <Route path="/search" component={Searchpage} />
-                        <Route path="/newuser" component={Newuserpage} />
-                        <Route path="/movement" component={BookMovementPage} />
-                        <Route path="/review" component={ReviewPage} />
-                        <Route path="/bookdelete" component={RemoveBookPage} />
-                        <Route path="/userdelete" component={RemoveUserPage} />
-                    </Switch>
-                </div>
-            </Router>
+            <div className="App">
+                <Switch>
+                    <Route exact path="/" component={Login} />
+                    {/* <PrivateRoute exact path="/add" component={Add} /> */}
+                    <Route path="/add" component={EnteteAddBook} />
+                    <Route component={NotFound} />
+                </Switch>
+            </div>
         );
     }
 }
 
-ReactDOM.render(<Routing />, document.getElementById("app"));
+export default App;

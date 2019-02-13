@@ -18,6 +18,7 @@ html, body {
 #app {
     background-image: url('../styles/images/bibli.jpg');
     height: 100vh;
+    background-repeat: repeat;
 }
 
 .blue {

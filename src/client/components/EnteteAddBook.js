@@ -1,5 +1,5 @@
-import React, {Component} from "react";
-class EnteteAddBook extends Component {
+import React from "react";
+class EnteteAddBook extends React.Component {
     render() {
         return (
             <div>
