@@ -4,7 +4,7 @@ const InputSignIn = ({onChange, errors}) => (
     <div>
         <input
             type="email"
-            id="username"
+            id="email"
             onChange={onChange().bind(this)}
             error={errors.email}
             placeholder="youremail@wtf.com"

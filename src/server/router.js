@@ -1,13 +1,11 @@
 const express = require("express");
 const router = new express.Router();
 
-const Middlewares = require("./Middlewares/Middlewares");
-
 const AuthController = require("./Controllers/AuthController");
 const UserController = require("./Controllers/UserController");
 const BookController = require("./Controllers/BookController");
 const ReviewController = require("./Controllers/ReviewController");
-
+// const verifyToken = require("./Middlewares/verifyToken");
 const Review = require("./Schemas/ReviewSchema");
 
 
@@ -22,16 +20,16 @@ router.post("/login", AuthController.login);
 
 router.get("/logout", AuthController.logout);
 
-router.get("/users", Middlewares.requiresLogin, UserController.index);
-router.get("/users/:id", Middlewares.requiresLogin, UserController.show);
-router.patch("/users/:id", Middlewares.requiresLogin, UserController.update);
-router.delete("/users/:id", Middlewares.requiresLogin, UserController.destroy);
+router.get("/users", UserController.index);
+router.get("/users/:id", UserController.show);
+router.patch("/users/:id", UserController.update);
+router.delete("/users/:id", UserController.destroy);
 
-router.get("/books", Middlewares.requiresLogin, BookController.index);
-router.get("/books/:id", Middlewares.requiresLogin, BookController.show);
-router.post("/books", Middlewares.requiresLogin, BookController.store);
-router.patch("/books/:id", Middlewares.requiresLogin, BookController.update);
-router.delete("/books/:id", Middlewares.requiresLogin, BookController.destroy);
+router.get("/books", BookController.index);
+router.get("/books/:id", BookController.show);
+router.post("/books", BookController.store);
+router.patch("/books/:id", BookController.update);
+router.delete("/books/:id", BookController.destroy);
 
 router.get("/reviews", ReviewController.index);
 router.get("/reviews/:id", ReviewController.show);

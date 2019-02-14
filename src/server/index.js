@@ -2,10 +2,12 @@ import express from "express";
 import path from "path";
 const logger = require("morgan");
 const cookieParser = require("cookie-parser");
-const session = require("express-session");
+// const session = require("express-session");
 const bodyParser = require("body-parser");
 // const jwt = require("jsonwebtoken");
+// const cors = require("cors");
 const mongoose = require("mongoose");
+
 
 const app = express();
 const {APP_PORT} = process.env;
@@ -17,7 +19,7 @@ app.use(
         extended: false,
     }),
 );
-
+// app.use(cors);
 app.use(cookieParser());
 
 // TODO add env variable

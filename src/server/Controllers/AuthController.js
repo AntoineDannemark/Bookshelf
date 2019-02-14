@@ -2,6 +2,8 @@ const jwt = require("jsonwebtoken");
 const config = require("../lib/config");
 
 const User = require("../Schemas/UserSchema");
+const Token = require("../Schemas/TokenSchema");
+const TokenController = require("./TokenController");
 
 const register = (req, res, next) => {
     if (
@@ -55,13 +57,30 @@ const login = function(req, res) {
                         });
                     } else if (isChecked) {
                         const payload = {
-                            user: user,
-                        };
-                        let token = jwt.sign(payload, config.secret);
-                        res.json({
-                            message: "Successfuly authenticated",
-                            token: token,
-                        })
+                            iss: "backend-authcontroller",
+                            aud: "react-frontend",
+                            first_name: user.first_name,
+                            last_name: user.last_name,
+                            email: user.email,
+                            admin: user.is_admin,
+                        };                
+                        jwt.sign(
+                            payload, 
+                            "Y0U-W1ll-D13-1F-Y0U-R3@4D-TH1S-T3RR1BL3-S3CR3T-@?!#·/<?#",
+                            {expiresIn: 60 * 60},
+                            (err, token) => {
+                                if(err) {
+                                    next(err);                            
+                                }
+                                const storableToken = {
+                                    email: user.email,
+                                    token: token,
+                                }
+                                // console.log(storableToken);
+                                TokenController.store(storableToken);
+                                res.json({token: token});
+                            }
+                        );
                     } else {
                         res.status(401).json({
                             text: "Wrong Password",
@@ -84,15 +103,10 @@ const login = function(req, res) {
 // };
 
 const logout = (req, res, next) => {
-    if (req.session) {
-        req.session.destroy(err => {
-            if(err) {
-                return next(err);
-            } else {
-                return res.redirect('/users');
-            }
-        });
-    }
+
+    // if(Token.findOne({email: req.email})) {
+        Token.deleteOne({email: req.body.email}).then(res.send("done"));
+    // }
 };
 
 exports.login = login;

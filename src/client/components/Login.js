@@ -12,7 +12,7 @@ class Login extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: "",
+            email: "",
             password: "",
             errors: {},
         };
@@ -33,7 +33,7 @@ class Login extends React.Component {
         e.nativeEvent.stopImmediatePropagation();
 
         const userData = {
-            username: this.state.username,
+            email: this.state.email,
             password: this.state.password,
         };
 

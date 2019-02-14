@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const bcrypt = require("bcrypt");
 
-
 const UserSchema = new Schema(
     {
         email: {
@@ -35,8 +34,11 @@ const UserSchema = new Schema(
         promotion: {
             type: String,
             required: true,
-            enum: ["liege", "bruxelles"],
+            enum: ["LIE-Hamilton-1.7", "bruxelles"],
         },
+        token: {
+            type: String,
+        }
     },
     {
         timestamps: {createdAt: "created_at"},
@@ -69,14 +71,14 @@ UserSchema.methods = {
     // getToken: function() {
     //     return jwt.encode(this, config.secret);
     // },
-    getToken: function() {
-        return jwt.sign({user: this.user}, config.secret, (err, token) => {
-            console.log(token);
-            res.json({
-                token: token,
-            })
-        })
-    }
+    // getToken: function() {
+    //     return jwt.sign({user: this.user}, config.secret, (err, token) => {
+    //         console.log(token);
+    //         res.json({
+    //             token: token,
+    //         })
+    //     })
+    // }
 };
 
 module.exports = mongoose.model("User", UserSchema);
