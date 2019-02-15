@@ -3,10 +3,10 @@ import React from "react";
 import Inputsignin from "./InputSignIn";
 import Submitbutton from "./Submitbutton";
 
-const Logform = ({onChange, onSubmit, errors}) => (
+const Logform = ({handleChange, handleSubmit, errors}) => (
     <div className="logformbackground">
-        <form className="logform" onSubmit={onSubmit}>
-            <Inputsignin onChange={onChange} errors={errors} />
+        <form className="logform" handleSubmit={handleSubmit}>
+            <Inputsignin handleChange={handleChange} errors={errors} />
             {/* <button type="submit">{"SUBMIT"}</button> */}
             <Submitbutton />
         </form>

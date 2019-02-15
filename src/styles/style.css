@@ -28,7 +28,8 @@
   text-align-last: center;
   font-family: Pacifico;
   color: rgb(121, 121, 121);
-  font-size: 22px;;
+  font-size: 22px;
+  background: white;
 }
 
 html, body {
@@ -37,8 +38,9 @@ html, body {
 
 #app {
     background-image: url('../styles/images/bibli.jpg');
-    height: 100vh;
-    background-repeat: repeat;
+    height: 140vh;
+    background-repeat: repeat-y;
+    background-repeat: repeat-x;
 }
 
 .blue {
@@ -56,7 +58,7 @@ input {
     text-align: center;
     color: #9BCACE;
     margin: 30px 0px;
-    width: 600px;
+    width: 650px;
     margin:auto;
     margin-top: 50px; 
     margin-bottom: 50px;
@@ -113,16 +115,14 @@ input {
 
 .nav {
   background-color: rgba(0, 0, 0, 0.6);
-  color: green;
   text-decoration: none;
-  height: 50px;
+  height: 55px;
   width: 900px;
   margin: auto;
 }
 
 .nav ul {
   display: flex;
-  color: white; 
 }
 
 .nav li {
@@ -131,6 +131,9 @@ input {
   margin: 0 20px;
   margin-top: 10px;
   text-align: center;
+  border-left: 1px solid #9BCACE;
+  border-right: 1px solid #9BCACE;
+  padding: 0px 4px;
 }
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */

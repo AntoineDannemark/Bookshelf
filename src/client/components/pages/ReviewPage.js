@@ -6,11 +6,13 @@ import InputTextArea from "../InputTextArea";
 import BookListDisplay from "../BookListDisplay";
 import NoteSelect from "../NoteSelect";
 import Submitbutton from "../Submitbutton";
+import Navbar from "../navbar/Navbar";
 
 class ReviewPage extends React.Component {
     render() {
         return (
             <div>
+                <Navbar />
                 <EnteteWriteReview />
                 <BookListDisplay />
                 <InputTextArea />

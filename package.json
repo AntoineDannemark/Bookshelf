@@ -13,7 +13,7 @@
     "work:client": "npx webpack-dev-server --env=dev --hot --progress",
     "build": "npm run build:server && npm run build:client"
   },
-  "proxy": "http://localhost:80/", 
+  "proxy": "http://localhost:80/",
   "lint-staged": {
     "*.js": [
       "npx eslint --fix --cache",

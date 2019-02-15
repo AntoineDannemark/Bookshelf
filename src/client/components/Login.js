@@ -10,29 +10,18 @@ class Login extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: "",
+            email: "",
             password: "",
             errors: {},
         };
-        this.onChange = this.onChange.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
     }
 
-    onChange = e => {
-        this.setState({[e.target.id]: e.target.value}, () => {
-            console.log(this.state);
-        });
+    handelChange = e => {
+        this.setState({[e.target.id]: e.target.value});
     };
 
-    onSubmit = e => {
+    handleSubmit = e => {
         e.preventDefault();
-
-        const userData = {
-            username: this.state.username,
-            password: this.state.password,
-        };
-
-        console.log(userData);
     };
 
     render() {
@@ -41,8 +30,8 @@ class Login extends React.Component {
                 <Logo />
                 <Slogan />
                 <Logform
-                    onChange={() => this.onChange}
-                    onSubmit={() => this.onSubmit}
+                    handleChange={() => this.handelChange}
+                    handleSubmit={() => this.handleSubmit}
                     errors={this.state.errors}
                 />
             </div>

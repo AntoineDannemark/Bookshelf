@@ -31,7 +31,7 @@ class Navbar extends Component {
                     </li>
 
                     <li>
-                        <Link to="/movement">{"Mouvements"}</Link>
+                        <Link to="/movement">{"Mouvements de livres"}</Link>
                     </li>
                     <li>
                         <Link to="/addbook">{"Ajout de livre"}</Link>
