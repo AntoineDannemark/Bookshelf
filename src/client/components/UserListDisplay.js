@@ -11,7 +11,7 @@ class UserListDisplay extends Component {
                             <option>
                                 {`${userDetail.last_name} ${
                                     userDetail.first_name
-                                }, promo: ${userDetail.promotion}`}
+                                }, promo  ${userDetail.promotion}`}
                             </option>
                         );
                     })}

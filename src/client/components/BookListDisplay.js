@@ -1,9 +1,15 @@
 import React, {Component} from "react";
+import BookData from "../../datas/booklist.json";
 class BookListDisplay extends Component {
     render() {
         return (
             <div>
-                <p className="white">{"liste de tous les livres"}</p>
+                <p className="white">{"Liste de tous les Livres"}</p>
+                <select>
+                    {BookData.map(bookdetail => {
+                        return <option> {bookdetail.name} </option>;
+                    })}
+                </select>
             </div>
         );
     }
