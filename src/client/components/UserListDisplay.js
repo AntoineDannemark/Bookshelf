@@ -3,7 +3,7 @@ import Userdata from "../../datas/userlist.json";
 class UserListDisplay extends Component {
     render() {
         return (
-            <div>
+            <div className="centeredDropDown">
                 <p className="white">{"Liste de tous les users"}</p>
                 <select className="movementselect">
                     {Userdata.map(userDetail => {

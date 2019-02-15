@@ -10,16 +10,18 @@ import JuniorNavbar from "../navbar/JuniorNavbar";
 class Searchpage extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {coach: false};
+        this.state = {coach: true};
     }
     render() {
         return (
             <div>
                 {this.state.coach ? <CoachNavbar /> : <JuniorNavbar />}
                 <Enteterecherche />
-                <Searchtextarea />
-                <Submitbutton />
-                <DisplayResearchResult />
+                <div className="logformbackground">
+                    <Searchtextarea />
+                    <Submitbutton />
+                    <DisplayResearchResult />
+                </div>
             </div>
         );
     }

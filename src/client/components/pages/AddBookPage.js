@@ -20,7 +20,7 @@ class AddBookPage extends Component {
             bookformat: "",
             bookowner: "",
             errors: {},
-            coach: false,
+            coach: true,
         };
 
         this.onChange = this.onChange.bind(this);
@@ -61,57 +61,65 @@ class AddBookPage extends Component {
             <div>
                 {this.state.coach ? <CoachNavbar /> : <JuniorNavbar />}
                 <EnteteAddBook />
-                <form className="addbookform" onSubmit={this.handleSubmit}>
-                    <input
-                        placeholder={"Titre du livre"}
-                        type="text"
-                        id="booktitle"
-                        onChange={this.handleFullNameChange}
-                        error={this.state.errors}
-                    />
-                    <input
-                        placeholder={"Code isbn du livre"}
-                        type="text"
-                        id="bookisbn"
-                        onChange={this.handleFullNameChange}
-                        error={this.state.errors}
-                    />
-                    <input
-                        placeholder={"Nom de l'auteur"}
-                        type="text"
-                        id="authorname"
-                        onChange={this.handleFullNameChange}
-                        error={this.state.errors}
-                    />
-                    <input
-                        placeholder={"Prénom de l'auteur"}
-                        type="text"
-                        id="authorlastname"
-                        onChange={this.handleFullNameChange}
-                        error={this.state.errors}
-                    />
-                    <select
-                        ref={select => (this.bookformat = select)}
-                        name="bookformat">
-                        <option value="french">{"Livre en français"}</option>
-                        <option value="english">{"Livre en anglais"}</option>
-                    </select>
-                    <input
-                        placeholder={"Propriétaire du livre"}
-                        type="text"
-                        id="bookowner"
-                        onChange={this.handleFullNameChange}
-                        error={this.state.errors}
-                    />
-                    <select
-                        ref={select => (this.bookformat = select)}
-                        name="bookformat">
-                        <option value="paper">{"Papier"}</option>
-                        <option value="numeric">{"Numérique"}</option>
-                    </select>
+                <div className="logformbackground">
+                    <form className="addbookform" onSubmit={this.handleSubmit}>
+                        <input
+                            placeholder={"Titre du livre"}
+                            type="text"
+                            id="booktitle"
+                            onChange={this.handleFullNameChange}
+                            error={this.state.errors}
+                        />
+                        <input
+                            placeholder={"Code isbn du livre"}
+                            type="text"
+                            id="bookisbn"
+                            onChange={this.handleFullNameChange}
+                            error={this.state.errors}
+                        />
+                        <input
+                            placeholder={"Nom de l'auteur"}
+                            type="text"
+                            id="authorname"
+                            onChange={this.handleFullNameChange}
+                            error={this.state.errors}
+                        />
+                        <input
+                            placeholder={"Prénom de l'auteur"}
+                            type="text"
+                            id="authorlastname"
+                            onChange={this.handleFullNameChange}
+                            error={this.state.errors}
+                        />
+                        <select
+                            ref={select => (this.bookformat = select)}
+                            name="bookformat">
+                            <option value="french">
+                                {"Livre en français"}
+                            </option>
+                            <option value="english">
+                                {"Livre en anglais"}
+                            </option>
+                        </select>
+                        <input
+                            placeholder={"Propriétaire du livre"}
+                            type="text"
+                            id="bookowner"
+                            onChange={this.handleFullNameChange}
+                            error={this.state.errors}
+                        />
+                        <select
+                            ref={select => (this.bookformat = select)}
+                            name="bookformat">
+                            <option value="paper">{"Format papier"}</option>
+                            <option value="numeric">
+                                {"Format numérique"}
+                            </option>
+                        </select>
 
-                    <SubmitButton className="addbooksubmit" />
-                </form>
+                        <SubmitButton className="addbooksubmit" />
+                    </form>
+                </div>
             </div>
         );
     }

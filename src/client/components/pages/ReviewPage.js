@@ -12,17 +12,19 @@ import JuniorNavbar from "../navbar/JuniorNavbar";
 class ReviewPage extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {coach: false};
+        this.state = {coach: true};
     }
     render() {
         return (
             <div>
                 {this.state.coach ? <CoachNavbar /> : <JuniorNavbar />}
                 <EnteteWriteReview />
-                <BookListDisplay />
-                <InputTextArea />
-                <NoteSelect />
-                <Submitbutton />
+                <div className="logformbackground">
+                    <BookListDisplay />
+                    <InputTextArea />
+                    <NoteSelect />
+                    <Submitbutton />
+                </div>
             </div>
         );
     }

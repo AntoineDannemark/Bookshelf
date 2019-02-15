@@ -25,8 +25,10 @@ class Newuserpage extends React.Component {
             <div>
                 {this.state.coach ? <CoachNavbar /> : <JuniorNavbar />}
                 <EnteteRemoveBook />
-                <BookListDisplay />
-                <Submitbutton />
+                <div className="logformbackground">
+                    <BookListDisplay />
+                    <Submitbutton />
+                </div>
             </div>
         );
     }

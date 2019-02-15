@@ -25,14 +25,21 @@ class Newuserpage extends React.Component {
             <div>
                 {this.state.coach ? <CoachNavbar /> : <JuniorNavbar />}
                 <EnteteNewUser />
-                <InputTextArea />
-                <InputTextArea />
-                <InputTextArea />
-                <InputTextArea />
-                <InputTextArea />
-                <InputTextArea />
-                {/* TODO checkbox JR/Coach */}
-                <Submitbutton />
+                <div className="logformbackground">
+                    <InputTextArea />
+                    <InputTextArea />
+                    <InputTextArea />
+                    <InputTextArea />
+                    <InputTextArea />
+                    <InputTextArea />
+                    <select
+                        ref={select => (this.bookformat = select)}
+                        name="bookformat">
+                        <option value="Junior">{"Utilisateur Junior"}</option>
+                        <option value="Coach">{"Coach Admin"}</option>
+                    </select>
+                    <Submitbutton />
+                </div>
             </div>
         );
     }

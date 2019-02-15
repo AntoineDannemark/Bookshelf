@@ -11,7 +11,7 @@ import NoAccess from "../NoAccess";
 class RemoveUserPage extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {coach: false};
+        this.state = {coach: true};
     }
     render() {
         if (this.state.coach === false) {
@@ -25,8 +25,10 @@ class RemoveUserPage extends React.Component {
             <div>
                 {this.state.coach ? <CoachNavbar /> : <JuniorNavbar />}
                 <EnteteRemoveUser />
-                <UserListDisplay />
-                <Submitbutton />
+                <div className="logformbackground">
+                    <UserListDisplay />
+                    <Submitbutton />
+                </div>
             </div>
         );
     }
