@@ -1,0 +1,26 @@
+[
+    {
+        "first_name": "Roger",
+        "last_name": "noel",
+        "is_admin": false,
+        "promotion": "liege"
+    },
+    {
+        "first_name": "Jean",
+        "last_name": "Latruie",
+        "is_admin": false,
+        "promotion": "bruxelles"
+    },
+    {
+        "first_name": "Alain",
+        "last_name": "Bécile",
+        "is_admin": true,
+        "promotion": "liege"
+    },
+    {
+        "first_name": "Jacqouille",
+        "last_name": "Mortecouille",
+        "is_admin": false,
+        "promotion": "bruxelles"
+    }
+]

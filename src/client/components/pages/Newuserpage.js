@@ -10,7 +10,7 @@ import NoAccess from "../NoAccess";
 class Newuserpage extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {coach: false};
+        this.state = {coach: true};
     }
     render() {
         if (this.state.coach === false) {

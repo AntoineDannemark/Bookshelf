@@ -20,7 +20,7 @@
   margin: 10px 0;
 }
 
-.addbookform select {
+.addbookform select, .movementselect {
   width: 405px;
   height: 40px;
   margin: 10px auto 10px auto;
@@ -183,6 +183,11 @@ input {
 
 .positionrelative {
     position: relative;
+}
+
+.selectwrapper {
+  width: 420px;
+  margin: auto;
 }
 
 /* ***********************************************Normalize************************************************************* */

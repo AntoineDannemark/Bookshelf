@@ -11,11 +11,8 @@ import NoAccess from "../NoAccess";
 class BookMovementPage extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            coach: true,
-        };
+        this.state = {coach: true};
     }
-
     render() {
         if (this.state.coach === false) {
             return (
