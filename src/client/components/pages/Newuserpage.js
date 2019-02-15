@@ -5,13 +5,22 @@ import InputTextArea from "../InputTextArea";
 import Submitbutton from "../Submitbutton";
 import CoachNavbar from "../navbar/CoachNavbar";
 import JuniorNavbar from "../navbar/JuniorNavbar";
+import NoAccess from "../NoAccess";
 
 class Newuserpage extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {coach: true};
+        this.state = {coach: false};
     }
     render() {
+        if (this.state.coach === false) {
+            return (
+                <div>
+                    <NoAccess />
+                </div>
+            );
+        }
+
         return (
             <div>
                 {this.state.coach ? <CoachNavbar /> : <JuniorNavbar />}

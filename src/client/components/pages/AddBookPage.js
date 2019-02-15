@@ -6,6 +6,7 @@ import EnteteAddBook from "../entetes/EnteteAddBook";
 import SubmitButton from "../Submitbutton";
 import CoachNavbar from "../navbar/CoachNavbar";
 import JuniorNavbar from "../navbar/JuniorNavbar";
+import NoAccess from "../NoAccess";
 
 class AddBookPage extends Component {
     constructor() {
@@ -19,7 +20,7 @@ class AddBookPage extends Component {
             bookformat: "",
             bookowner: "",
             errors: {},
-            coach: true,
+            coach: false,
         };
 
         this.onChange = this.onChange.bind(this);
@@ -49,6 +50,13 @@ class AddBookPage extends Component {
     };
 
     render() {
+        if (this.state.coach === false) {
+            return (
+                <div>
+                    <NoAccess />
+                </div>
+            );
+        }
         return (
             <div>
                 {this.state.coach ? <CoachNavbar /> : <JuniorNavbar />}
