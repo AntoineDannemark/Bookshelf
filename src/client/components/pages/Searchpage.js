@@ -4,13 +4,18 @@ import DisplayResearchResult from "../DisplayResearchResult";
 import Enteterecherche from "../entetes/Enteterecherche";
 import Searchtextarea from "../Searchtextarea";
 import Submitbutton from "../Submitbutton";
-import Navbar from "../navbar/Navbar";
+import CoachNavbar from "../navbar/CoachNavbar";
+import JuniorNavbar from "../navbar/JuniorNavbar";
 
 class Searchpage extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {coach: false};
+    }
     render() {
         return (
             <div>
-                <Navbar />
+                {this.state.coach ? <CoachNavbar /> : <JuniorNavbar />}
                 <Enteterecherche />
                 <Searchtextarea />
                 <Submitbutton />

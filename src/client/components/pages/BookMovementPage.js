@@ -4,14 +4,19 @@ import BookListDisplay from "../BookListDisplay";
 import EnteteEmpruntRetour from "../entetes/EnteteEmpruntRetour";
 import UserListDisplay from "../UserListDisplay";
 import SubmitButton from "../Submitbutton";
-import Navbar from "../navbar/Navbar";
+import CoachNavbar from "../navbar/CoachNavbar";
+import JuniorNavbar from "../navbar/JuniorNavbar";
 
 class BookMovementPage extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {coach: false};
+    }
     render() {
         return (
             <div>
                 <form>
-                    <Navbar />
+                    {this.state.coach ? <CoachNavbar /> : <JuniorNavbar />}
                     <EnteteEmpruntRetour />
                     <BookListDisplay />
                     <UserListDisplay />

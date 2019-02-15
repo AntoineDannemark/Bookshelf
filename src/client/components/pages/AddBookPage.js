@@ -4,7 +4,8 @@ import "../../../styles/style.css";
 
 import EnteteAddBook from "../entetes/EnteteAddBook";
 import SubmitButton from "../Submitbutton";
-import Navbar from "../navbar/Navbar";
+import CoachNavbar from "../navbar/CoachNavbar";
+import JuniorNavbar from "../navbar/JuniorNavbar";
 
 class AddBookPage extends Component {
     constructor() {
@@ -18,6 +19,7 @@ class AddBookPage extends Component {
             bookformat: "",
             bookowner: "",
             errors: {},
+            coach: true,
         };
 
         this.onChange = this.onChange.bind(this);
@@ -49,7 +51,7 @@ class AddBookPage extends Component {
     render() {
         return (
             <div>
-                <Navbar />
+                {this.state.coach ? <CoachNavbar /> : <JuniorNavbar />}
                 <EnteteAddBook />
                 <form className="addbookform" onSubmit={this.handleSubmit}>
                     <input
