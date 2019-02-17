@@ -14,8 +14,7 @@ class AddBookPage extends Component {
         this.state = {
             booktitle: "",
             bookisbn: "",
-            authorname: "",
-            authorlastname: "",
+            author: "",
             booklanguage: "",
             bookformat: "",
             bookowner: "",
@@ -39,8 +38,7 @@ class AddBookPage extends Component {
         const userData = {
             booktitle: this.state.booktitle,
             bookisbn: this.state.bookisbn,
-            authorname: this.state.authorname,
-            authorlastname: this.state.authorlastname,
+            author: this.state.author,
             booklanguage: this.state.booklanguage,
             bookformat: this.state.bookformat,
             bookowner: this.state.bookowner,
@@ -83,15 +81,7 @@ class AddBookPage extends Component {
                             className="inputtext"
                             placeholder={"Nom de l'auteur"}
                             type="text"
-                            id="authorname"
-                            onChange={this.handleFullNameChange}
-                            error={this.state.errors}
-                        />
-                        <input
-                            className="inputtext"
-                            placeholder={"Prénom de l'auteur"}
-                            type="text"
-                            id="authorlastname"
+                            id="author"
                             onChange={this.handleFullNameChange}
                             error={this.state.errors}
                         />
@@ -124,7 +114,7 @@ class AddBookPage extends Component {
                             </option>
                         </select>
 
-                        <SubmitButton className="addbooksubmit" />
+                        <SubmitButton />
                     </form>
                 </div>
             </div>

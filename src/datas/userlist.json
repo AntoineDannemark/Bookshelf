@@ -2,24 +2,32 @@
     {
         "first_name": "Roger",
         "last_name": "Noel",
+        "email": "roger@gmail.com",
+        "password": "roger",
         "is_admin": false,
         "promotion": "liege"
     },
     {
         "first_name": "Jean",
         "last_name": "Latruie",
+        "email": "jean@gmail.com",
+        "password": "jean",
         "is_admin": false,
         "promotion": "bruxelles"
     },
     {
         "first_name": "Alain",
         "last_name": "Bécile",
+        "email": "alain@gmail.com",
+        "password": "alain",
         "is_admin": true,
         "promotion": "liege"
     },
     {
-        "first_name": "Jacqouille",
-        "last_name": "Mortecouille",
+        "first_name": "Jacques",
+        "last_name": "Ouille",
+        "email": "jacques@gmail.com",
+        "password": "jacques",
         "is_admin": false,
         "promotion": "bruxelles"
     }
