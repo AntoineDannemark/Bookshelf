@@ -3,7 +3,11 @@ class InputTextArea extends Component {
     render() {
         return (
             <div>
-                <input type="text" />
+                <input
+                    className="inputtext"
+                    type="text"
+                    placeholder={this.props.placeholder}
+                />
             </div>
         );
     }

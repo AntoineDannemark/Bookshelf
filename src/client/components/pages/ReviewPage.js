@@ -20,10 +20,14 @@ class ReviewPage extends React.Component {
                 {this.state.coach ? <CoachNavbar /> : <JuniorNavbar />}
                 <EnteteWriteReview />
                 <div className="logformbackground">
-                    <BookListDisplay />
-                    <InputTextArea />
-                    <NoteSelect />
-                    <Submitbutton />
+                    <div>
+                        <BookListDisplay />
+                    </div>
+                    <div>
+                        <InputTextArea placeholder="Ecrire une revue" />
+                        <NoteSelect />
+                        <Submitbutton />
+                    </div>
                 </div>
             </div>
         );

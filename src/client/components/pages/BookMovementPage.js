@@ -26,22 +26,26 @@ class BookMovementPage extends Component {
         }
         return (
             <div>
-                <form>
-                    {this.state.coach ? <CoachNavbar /> : <JuniorNavbar />}
-                    <EnteteEmpruntRetour />
-                    <BookListDisplay />
-                    <UserListDisplay />
-                    <div className="selectwrapper">
-                        <select
-                            className="movementselect"
-                            ref={select => (this.bookformat = select)}
-                            name="bookformat">
-                            <option value="emprunt">{"Emprunt"}</option>
-                            <option value="retour">{"Retour"}</option>
-                        </select>
-                    </div>
-                    <SubmitButton />
-                </form>
+                {this.state.coach ? <CoachNavbar /> : <JuniorNavbar />}
+                <EnteteEmpruntRetour />
+                <div
+                    className="logformbackground
+                ">
+                    <form>
+                        <BookListDisplay />
+                        <UserListDisplay />
+                        <div className="selectwrapper">
+                            <select
+                                className="inputtext"
+                                ref={select => (this.bookformat = select)}
+                                name="bookformat">
+                                <option value="emprunt">{"Emprunt"}</option>
+                                <option value="retour">{"Retour"}</option>
+                            </select>
+                        </div>
+                        <SubmitButton />
+                    </form>
+                </div>
             </div>
         );
     }

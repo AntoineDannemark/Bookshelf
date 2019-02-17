@@ -3,7 +3,7 @@ class Slogan extends Component {
     render() {
         return (
             <div>
-                <p className="library">
+                <p className="entete">
                     {"Your"} <span className="white">{"code"}</span> {"library"}
                 </p>
             </div>

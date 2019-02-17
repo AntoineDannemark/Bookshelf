@@ -64,6 +64,7 @@ class AddBookPage extends Component {
                 <div className="logformbackground">
                     <form className="addbookform" onSubmit={this.handleSubmit}>
                         <input
+                            className="inputtext"
                             placeholder={"Titre du livre"}
                             type="text"
                             id="booktitle"
@@ -71,6 +72,7 @@ class AddBookPage extends Component {
                             error={this.state.errors}
                         />
                         <input
+                            className="inputtext"
                             placeholder={"Code isbn du livre"}
                             type="text"
                             id="bookisbn"
@@ -78,6 +80,7 @@ class AddBookPage extends Component {
                             error={this.state.errors}
                         />
                         <input
+                            className="inputtext"
                             placeholder={"Nom de l'auteur"}
                             type="text"
                             id="authorname"
@@ -85,6 +88,7 @@ class AddBookPage extends Component {
                             error={this.state.errors}
                         />
                         <input
+                            className="inputtext"
                             placeholder={"Prénom de l'auteur"}
                             type="text"
                             id="authorlastname"
@@ -92,6 +96,7 @@ class AddBookPage extends Component {
                             error={this.state.errors}
                         />
                         <select
+                            className="inputtext"
                             ref={select => (this.bookformat = select)}
                             name="bookformat">
                             <option value="french">
@@ -102,6 +107,7 @@ class AddBookPage extends Component {
                             </option>
                         </select>
                         <input
+                            className="inputtext"
                             placeholder={"Propriétaire du livre"}
                             type="text"
                             id="bookowner"
@@ -109,6 +115,7 @@ class AddBookPage extends Component {
                             error={this.state.errors}
                         />
                         <select
+                            className="inputtext"
                             ref={select => (this.bookformat = select)}
                             name="bookformat">
                             <option value="paper">{"Format papier"}</option>

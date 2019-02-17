@@ -3,7 +3,7 @@ class EnteteRemoveBook extends Component {
     render() {
         return (
             <div>
-                <p className="library">{"Supprimer un utilisateur"}</p>
+                <p className="entete">{"Supprimer un utilisateur"}</p>
             </div>
         );
     }

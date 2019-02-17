@@ -26,13 +26,13 @@ class Newuserpage extends React.Component {
                 {this.state.coach ? <CoachNavbar /> : <JuniorNavbar />}
                 <EnteteNewUser />
                 <div className="logformbackground">
-                    <InputTextArea />
-                    <InputTextArea />
-                    <InputTextArea />
-                    <InputTextArea />
-                    <InputTextArea />
-                    <InputTextArea />
+                    <InputTextArea placeholder="Nom" />
+                    <InputTextArea placeholder="Prenom" />
+                    <InputTextArea placeholder="Email" />
+                    <InputTextArea placeholder="Password" />
+                    <InputTextArea placeholder="Promotion" />
                     <select
+                        className="inputtext"
                         ref={select => (this.bookformat = select)}
                         name="bookformat">
                         <option value="Junior">{"Utilisateur Junior"}</option>

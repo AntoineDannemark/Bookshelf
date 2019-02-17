@@ -4,8 +4,8 @@ class UserListDisplay extends Component {
     render() {
         return (
             <div className="centeredDropDown">
-                <p className="white">{"Liste de tous les users"}</p>
-                <select className="movementselect">
+                <h3>{"Liste de tous les utilisateurs"}</h3>
+                <select className="inputtext">
                     {Userdata.map(userDetail => {
                         return (
                             <option>

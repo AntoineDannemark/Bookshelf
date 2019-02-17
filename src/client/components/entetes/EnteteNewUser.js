@@ -3,7 +3,7 @@ class EnteteNewUser extends Component {
     render() {
         return (
             <div>
-                <p className="library">{"Ajouter un utilisateur"}</p>
+                <p className="entete">{"Ajouter un utilisateur"}</p>
             </div>
         );
     }

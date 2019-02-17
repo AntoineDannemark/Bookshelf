@@ -1,7 +1,8 @@
 import React from "react";
 const NoteSelect = () => (
     <div>
-        <select name="note">
+        <label htmlFor="Note">{"Notez le livre"} </label>
+        <select name="note" className="booknote">
             <option value="0">{"0"}</option>
             <option value="1">{"1"}</option>
             <option value="2">{"2"}</option>

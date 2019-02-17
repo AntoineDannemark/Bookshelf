@@ -3,6 +3,7 @@ import React from "react";
 const InputSignIn = ({handleChange, errors}) => (
     <div>
         <input
+            className="inputtext"
             type="email"
             id="username"
             handleChange={handleChange().bind(this)}
@@ -11,6 +12,7 @@ const InputSignIn = ({handleChange, errors}) => (
             required={true}
         />
         <input
+            className="inputtext"
             type="text"
             id="password"
             handleChange={handleChange().bind(this)}

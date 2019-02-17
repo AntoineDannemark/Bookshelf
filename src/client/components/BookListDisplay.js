@@ -3,9 +3,9 @@ import BookData from "../../datas/booklist.json";
 class BookListDisplay extends Component {
     render() {
         return (
-            <div className="centeredDropDown">
-                <p className="white">{"Liste de tous les Livres"}</p>
-                <select className="movementselect">
+            <div className="select">
+                <h3>{"Liste de tous les livres"}</h3>
+                <select className="inputtext">
                     {BookData.map(bookdetail => {
                         return <option> {bookdetail.name} </option>;
                     })}
