@@ -1,7 +1,6 @@
 const express = require("express");
 const router = new express.Router();
 
-const AuthController = require("./Controllers/AuthController");
 const UserController = require("./Controllers/UserController");
 const BookController = require("./Controllers/BookController");
 const ReviewController = require("./Controllers/ReviewController");
@@ -9,16 +8,7 @@ const ReviewController = require("./Controllers/ReviewController");
 const Review = require("./Schemas/ReviewSchema");
 
 
-router.get("/", (req, res) => {
-    console.log(req.user);
-    res.send("welcoume");
-});
 
-router.post("/register", AuthController.register);
-
-router.post("/login", AuthController.login);
-
-router.get("/logout", AuthController.logout);
 
 router.get("/users", UserController.index);
 router.get("/users/:id", UserController.show);

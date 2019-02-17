@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const bcrypt = require("bcrypt");
+
 
 const UserSchema = new Schema(
     {
@@ -45,40 +45,27 @@ const UserSchema = new Schema(
     },
 );
 
-UserSchema.pre("save", function(next) {
-    const user = this;
+// UserSchema.pre("save", function(next) {
+//     const user = this;
 
-    bcrypt.hash(user.password, 10, (err, hash) => {
-        if (err) {
-            return next(err);
-        }
-        user.password = hash;
-        next();
-    });
-});
+//     bcrypt.hash(user.password, 10, (err, hash) => {
+//         if (err) {
+//             return next(err);
+//         }
+//         user.password = hash;
+//         next();
+//     });
+// });
 
-UserSchema.methods = {
-    authenticate: function(password, next) {
-        bcrypt.compare(password, this.password, function(err, result) {
-            if (err) {
-                throw err;
-            }
-            next(result);
-        });
-        // return true;
-        // return passwordHash.verify(password, this.password);
-    },
-    // getToken: function() {
-    //     return jwt.encode(this, config.secret);
-    // },
-    // getToken: function() {
-    //     return jwt.sign({user: this.user}, config.secret, (err, token) => {
-    //         console.log(token);
-    //         res.json({
-    //             token: token,
-    //         })
-    //     })
-    // }
-};
+// UserSchema.methods = {
+//     authenticate: function(password, next) {
+//         bcrypt.compare(password, this.password, function(err, result) {
+//             if (err) {
+//                 throw err;
+//             }
+//             next(result);
+//         });
+//     }
+// };
 
 module.exports = mongoose.model("User", UserSchema);
