@@ -17,6 +17,7 @@ class Login extends React.Component {
             errors: {},
         };
         this.onChange = this.onChange.bind(this);
+        this.logout = this.logout.bind(this);
         this.handleClick = this.handleClick.bind(this);
         this.getUsers = this.getUsers.bind(this);
     }
@@ -26,6 +27,25 @@ class Login extends React.Component {
             console.log(this.state);
         });
     };
+
+    logout = e => {
+        e.preventDefault();
+        e.stopPropagation();
+        e.nativeEvent.stopImmediatePropagation();
+
+        axios
+        .post("http://localhost/api/users/logout")
+        .then(res => {
+            if (res.data) {
+                console.log(res.data);
+            } else {
+                console.log("Login failed");
+            }
+        })
+        .catch(err => {
+            console.log(err);
+        });
+    }
 
     handleClick = e => {
         e.preventDefault();
@@ -76,6 +96,7 @@ class Login extends React.Component {
                 <Logform
                     onChange={() => this.onChange}
                     handleClick={() => this.handleClick}
+                    logout={() => this.logout}
                     getUsers={() => this.getUsers}
                     errors={this.state.errors}
                 />

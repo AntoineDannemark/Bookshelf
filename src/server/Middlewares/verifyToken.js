@@ -25,5 +25,4 @@ exports.verifyToken = function(req, res, next) {
             message: "Token not found",         
         })
     }
-
 }

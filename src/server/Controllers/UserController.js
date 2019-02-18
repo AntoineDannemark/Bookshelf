@@ -65,8 +65,6 @@ const destroy = (req, res) => {
         );
 };
 
-
-
 const login = (req, res) => {
     if (!req.body.email || !req.body.password) {
         return res.status(400).json({
@@ -103,9 +101,18 @@ const login = (req, res) => {
     }
 }
 
+const logout = (req, res) => {
+    console.log("yo");
+    localStorage.setItem("token", "");    
+    res.status(200).json({
+        message: "Logged out"
+    })    
+}
+
 exports.index = index;
 exports.show = show;
 exports.store = store;
 exports.update = update;
 exports.destroy = destroy;
 exports.login = login;
+exports.logout = logout;

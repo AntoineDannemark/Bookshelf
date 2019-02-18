@@ -13,6 +13,7 @@ router.post("/users", UserController.store);
 router.patch("/users/:id", UserController.update);
 router.delete("/users/:id", UserController.destroy);
 router.post("/users/login", UserController.login);
+router.post("/users/logout", UserController.logout);
 
 router.get("/books", BookController.index);
 router.get("/books/:id", BookController.show);
