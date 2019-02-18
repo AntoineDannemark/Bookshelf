@@ -37,13 +37,11 @@ class Login extends React.Component {
             password: this.state.password,
         };
 
-        console.log(userData);
-
         axios
-            .post("http://localhost/api/login", userData)
+            .post("http://localhost/api/users/login", userData)
             .then(res => {
                 if (res.data) {
-                    console.log(res.session);
+                    console.log(res.data);
                 } else {
                     console.log("Login failed");
                 }

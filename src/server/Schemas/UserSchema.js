@@ -3,7 +3,6 @@ const Schema = mongoose.Schema;
 import bcrypt from "bcrypt";
 const saltRounds = 10;
 const jwt = require('jsonwebtoken');
-const store = require('store');
 
 const UserSchema = new Schema(
     {
@@ -66,20 +65,14 @@ UserSchema.methods = {
             });
     },
 
-    getToken: function() {
+    getToken: function(next) {
         const payload = {
-            email: this.email
+            email: this.email,
         }
         return jwt.sign(payload, "SecretStory", {
             expiresIn: "1h",
-        }, (err, token) => {
-            if (err) {
-                console.log(err);
-            } else {
-                console.log(token);
-            }
         });
-    },
+    }
 };
 
 module.exports = mongoose.model("User", UserSchema);

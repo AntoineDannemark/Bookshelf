@@ -5,7 +5,7 @@ const UserController = require("./Controllers/UserController");
 const BookController = require("./Controllers/BookController");
 const LoanController = require("./Controllers/LoanController");
 const ReviewController = require("./Controllers/ReviewController");
-// const verifyToken = require("./Middlewares/verifyToken");
+const Middlewares = require("./Middlewares/verifyToken");
 
 router.get("/users", UserController.index);
 router.get("/users/:id", UserController.show);
@@ -14,7 +14,7 @@ router.patch("/users/:id", UserController.update);
 router.delete("/users/:id", UserController.destroy);
 router.post("/users/login", UserController.login);
 
-router.get("/books", BookController.index);
+router.get("/books", Middlewares.verifyToken, BookController.index);
 router.get("/books/:id", BookController.show);
 router.post("/books", BookController.store);
 router.patch("/books/:id", BookController.update);

@@ -1,5 +1,8 @@
 const User = require("../Schemas/UserSchema");
-// const localStorage = require('store')
+const LocalStorage = require("node-localstorage").LocalStorage;
+const localStorage = new LocalStorage("./scratch");
+
+   
 
 const index = (req, res) => {
     User.find()
@@ -87,11 +90,12 @@ const login = (req, res) => {
                         message: "Email not found",
                     }) 
                 } else if (isChecked) {
+                    const token = user.getToken();
                     res.status(200).json({
-                        // auth: true,
-                        token: user.getToken(),
+                        token: token,
                         text: "Authentication succesful",
-                    })
+                    });
+                    localStorage.setItem("token", token);
                 } else {
                     res.status(401).json({
                         text: "Wrong password",
