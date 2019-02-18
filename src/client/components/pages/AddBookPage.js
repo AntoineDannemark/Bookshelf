@@ -66,7 +66,7 @@ class AddBookPage extends Component {
                             placeholder={"Titre du livre"}
                             type="text"
                             id="booktitle"
-                            onChange={this.handleFullNameChange}
+                            onChange={() => this.onChange}
                             error={this.state.errors}
                         />
                         <input
@@ -74,7 +74,7 @@ class AddBookPage extends Component {
                             placeholder={"Code isbn du livre"}
                             type="text"
                             id="bookisbn"
-                            onChange={this.handleFullNameChange}
+                            onChange={() => this.onChange}
                             error={this.state.errors}
                         />
                         <input
@@ -82,7 +82,7 @@ class AddBookPage extends Component {
                             placeholder={"Nom de l'auteur"}
                             type="text"
                             id="author"
-                            onChange={this.handleFullNameChange}
+                            onChange={() => this.onChange}
                             error={this.state.errors}
                         />
                         <select
@@ -101,7 +101,7 @@ class AddBookPage extends Component {
                             placeholder={"Propriétaire du livre"}
                             type="text"
                             id="bookowner"
-                            onChange={this.handleFullNameChange}
+                            onChange={() => this.onChange}
                             error={this.state.errors}
                         />
                         <select

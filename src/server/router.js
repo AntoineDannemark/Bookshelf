@@ -7,6 +7,8 @@ const LoanController = require("./Controllers/LoanController");
 const ReviewController = require("./Controllers/ReviewController");
 const Middlewares = require("./Middlewares/verifyToken");
 
+const Review = require("./Schemas/ReviewSchema");
+
 router.get("/users", Middlewares.verifyToken, UserController.index);
 router.get("/users/:id", UserController.show);
 router.post("/users", UserController.store);
@@ -38,30 +40,30 @@ router.delete("/loans/:id", LoanController.destroy);
 
 
 
-// router.get("/test", (req, res) => {
-//     Review.find()
-//         .select("book note comment owner")
-//         .populate("book", "title author")
-//         .populate("owner", "first_name last_name promotion")
-//         .then(docs => {
-//             res.status(200).send({
-//                 count: docs.length,
-//                 review: docs.map(doc => {
-//                     return {
-//                         book: doc.book,
-//                         note: doc.note,
-//                         comment: doc.comment,
-//                         id: doc._id,
-//                         owner: doc.owner,
-//                     };
-//                 }),
-//             });
-//         })
-//         .catch(err => {
-//             res.status(500).json({
-//                 error: err,
-//             });
-//         });
-// });
+router.get("/test", (req, res) => {
+    Review.find()
+        .select("book note comment user")
+        .populate("book", "title author")
+        .populate("user", "first_name last_name promotion")
+        .then(docs => {
+            res.status(200).send({
+                count: docs.length,
+                review: docs.map(doc => {
+                    return {
+                        book: doc.book,
+                        note: doc.note,
+                        comment: doc.comment,
+                        id: doc._id,
+                        user: doc.user,
+                    };
+                }),
+            });
+        })
+        .catch(err => {
+            res.status(500).json({
+                error: err,
+            });
+        });
+});
 
 module.exports = router;
