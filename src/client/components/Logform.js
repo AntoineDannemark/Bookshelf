@@ -3,11 +3,11 @@ import React from "react";
 import Inputsignin from "./InputSignIn";
 import Submitbutton from "./Submitbutton";
 
-const Logform = ({handleChange, handleSubmit, errors}) => (
+const Logform = props => (
     <div className="logformbackground">
-        <form className="logform" handleSubmit={handleSubmit}>
-            <Inputsignin handleChange={handleChange} errors={errors} />
-            <Submitbutton />
+        <form className="logform">
+            <Inputsignin />
+            <Submitbutton jeClique={props.jeClique} />
         </form>
     </div>
 );

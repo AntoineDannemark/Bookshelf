@@ -11,7 +11,7 @@ import NoAccess from "../NoAccess";
 class RemoveUserPage extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {coach: true};
+        this.state = {coach: false};
     }
     render() {
         if (this.state.coach === false) {

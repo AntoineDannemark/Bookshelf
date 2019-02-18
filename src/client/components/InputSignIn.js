@@ -1,13 +1,11 @@
 import React from "react";
 
-const InputSignIn = ({handleChange, errors}) => (
+const InputSignIn = () => (
     <div>
         <input
             className="inputtext"
             type="email"
             id="username"
-            handleChange={handleChange().bind(this)}
-            error={errors.email}
             placeholder="youremail@wtf.com"
             required={true}
         />
@@ -15,8 +13,6 @@ const InputSignIn = ({handleChange, errors}) => (
             className="inputtext"
             type="text"
             id="password"
-            handleChange={handleChange().bind(this)}
-            error={errors.password}
             placeholder="Your password"
             required={true}
         />

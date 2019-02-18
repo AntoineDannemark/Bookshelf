@@ -1,8 +1,12 @@
 import React from "react";
 
-const Submitbutton = () => (
+const Submitbutton = props => (
     <div>
-        <input className="submitbutton" type="submit" />
+        <input
+            onClick={() => props.jeClique()}
+            className="submitbutton"
+            type="submit"
+        />
     </div>
 );
 

@@ -14,19 +14,26 @@ class Login extends React.Component {
             password: "",
             errors: {},
         };
-        this.handleClick = this.handleClick.bind(this);
     }
 
-    handleClick() {
-        console.log("click happened");
-    }
+    handelChange = e => {
+        this.setState({[e.target.id]: e.target.value});
+    };
+
+    handleSubmit = e => {
+        e.preventDefault();
+    };
 
     render() {
         return (
             <div>
                 <Logo />
                 <Slogan />
-                <Logform jeClique={this.handleClick} />
+                <Logform
+                    handleChange={() => this.handelChange}
+                    handleSubmit={() => this.handleSubmit}
+                    errors={this.state.errors}
+                />
             </div>
         );
     }
