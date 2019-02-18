@@ -3,10 +3,10 @@ const router = new express.Router();
 
 const UserController = require("./Controllers/UserController");
 const BookController = require("./Controllers/BookController");
+const LoanController = require("./Controllers/LoanController");
 // const ReviewController = require("./Controllers/ReviewController");
 // const verifyToken = require("./Middlewares/verifyToken");
 // const Review = require("./Schemas/ReviewSchema");
-// const Loan = require("./Schemas/LoanSchema");
 
 
 
@@ -28,11 +28,11 @@ router.delete("/books/:id", BookController.destroy);
 // router.patch("/reviews/:id", ReviewController.update);
 // router.delete("/reviews/:id", ReviewController.destroy);
 
-// router.get("/loans", Loan.index);
-// router.get("/loans/:id", Loan.show);
-// router.post("/loans", Loan.store);
-// router.patch("/loans/:id", Loan.update);
-// router.delete("/loansreviews/:id", Loan.destroy);
+router.get("/loans", LoanController.index);
+router.get("/loans/:id", LoanController.show);
+router.post("/loans", LoanController.store);
+router.patch("/loans/:id", LoanController.update);
+router.delete("/loans/:id", LoanController.destroy);
 
 
 

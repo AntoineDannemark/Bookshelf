@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const LoanSchema = new Schema(
     {
         date: {
-            type: Date,
+            type: Date,            
             required: [true, "the loan date is required"],
         },
         book: [
