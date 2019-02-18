@@ -8,7 +8,7 @@ import CoachNavbar from "../navbar/CoachNavbar";
 import JuniorNavbar from "../navbar/JuniorNavbar";
 import NoAccess from "../NoAccess";
 
-class Newuserpage extends React.Component {
+class RemoveBookPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {coach: true};
@@ -34,4 +34,4 @@ class Newuserpage extends React.Component {
     }
 }
 
-export default Newuserpage;
+export default RemoveBookPage;
