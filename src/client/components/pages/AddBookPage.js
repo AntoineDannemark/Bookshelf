@@ -8,18 +8,20 @@ import CoachNavbar from "../navbar/CoachNavbar";
 import JuniorNavbar from "../navbar/JuniorNavbar";
 import NoAccess from "../NoAccess";
 
+import axios from "axios";
+
 class AddBookPage extends Component {
     constructor() {
         super();
         this.state = {
-            booktitle: "",
-            bookisbn: "",
+            title: "",
+            isbn: "",
             author: "",
-            booklanguage: "",
-            bookformat: "",
-            bookowner: "",
+            language: "",
+            ebook: "",
+            owner: "",
             errors: {},
-            coach: true,
+            // coach: "",
         };
 
         this.onChange = this.onChange.bind(this);
@@ -35,46 +37,58 @@ class AddBookPage extends Component {
     onSubmit = e => {
         e.preventDefault();
 
-        const userData = {
-            booktitle: this.state.booktitle,
-            bookisbn: this.state.bookisbn,
+        const bookData = {
+            title: this.state.title,
+            isbn: this.state.isbn,
             author: this.state.author,
-            booklanguage: this.state.booklanguage,
-            bookformat: this.state.bookformat,
-            bookowner: this.state.bookowner,
+            language: this.state.language,
+            ebook: this.state.ebook,
+            owner: this.state.owner,
         };
+        console.log(bookData);
 
-        console.log(userData);
+        axios
+            .post("http://localhost/api/books", bookData)
+            .then(res => {
+                if (res.data) {
+                    console.log(res.data);
+                } else {
+                    console.log("Login failed");
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            });
     };
 
     render() {
-        if (this.state.coach === false) {
-            return (
-                <div>
-                    <NoAccess />
-                </div>
-            );
-        }
+        // if (this.state.coach === false) {
+        //     return (
+        //         <div>
+        //             <NoAccess />
+        //         </div>
+        //     );
+        // }
         return (
             <div>
                 {this.state.coach ? <CoachNavbar /> : <JuniorNavbar />}
                 <EnteteAddBook />
                 <div className="logformbackground">
-                    <form className="addbookform" onSubmit={this.handleSubmit}>
+                    <form className="addbookform" onSubmit={this.onSubmit}>
                         <input
                             className="inputtext"
                             placeholder={"Titre du livre"}
                             type="text"
-                            id="booktitle"
-                            onChange={() => this.onChange}
+                            id="title"
+                            onChange={this.onChange}
                             error={this.state.errors}
                         />
                         <input
                             className="inputtext"
                             placeholder={"Code isbn du livre"}
                             type="text"
-                            id="bookisbn"
-                            onChange={() => this.onChange}
+                            id="isbn"
+                            onChange={this.onChange}
                             error={this.state.errors}
                         />
                         <input
@@ -82,13 +96,14 @@ class AddBookPage extends Component {
                             placeholder={"Nom de l'auteur"}
                             type="text"
                             id="author"
-                            onChange={() => this.onChange}
+                            onChange={this.onChange}
                             error={this.state.errors}
                         />
                         <select
                             className="inputtext"
-                            ref={select => (this.bookformat = select)}
-                            name="bookformat">
+                            id="language"   
+                            onChange={this.onChange}
+                            name="language">
                             <option value="french">
                                 {"Livre en français"}
                             </option>
@@ -100,21 +115,22 @@ class AddBookPage extends Component {
                             className="inputtext"
                             placeholder={"Propriétaire du livre"}
                             type="text"
-                            id="bookowner"
-                            onChange={() => this.onChange}
+                            id="owner"
+                            onChange={this.onChange}
                             error={this.state.errors}
                         />
                         <select
                             className="inputtext"
-                            ref={select => (this.bookformat = select)}
-                            name="bookformat">
-                            <option value="paper">{"Format papier"}</option>
-                            <option value="numeric">
+                            id="ebook"
+                            name="bookformat"
+                            onChange={this.onChange}>
+                            <option value="false">{"Format papier"}</option>
+                            <option value="true">
                                 {"Format numérique"}
                             </option>
                         </select>
-
-                        <SubmitButton />
+                        <button type="submit">submit</button>
+                        {/* <SubmitButton /> */}
                     </form>
                 </div>
             </div>

@@ -14,7 +14,7 @@ const store = (req, res) => {
             language: req.body.language,
             owner: req.body.owner,
         });
-
+        console.log(newBook);
         newBook
             .save()
             .then(book => res.status(200).json(book))     
