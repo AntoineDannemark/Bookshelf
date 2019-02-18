@@ -1,5 +1,6 @@
 const User = require("../Schemas/UserSchema");
 
+
 const index = (req, res) => {
     User.find()
         .then(users => res.status(200).json(users))
@@ -60,6 +61,13 @@ const destroy = (req, res) => {
             })
         );
 };
+
+// const login = (req, res) => {
+//     user.find({email: req.body.email})
+//         .then(
+//             if ()
+//         )
+// }
 
 exports.index = index;
 exports.show = show;

@@ -6,9 +6,6 @@ const BookController = require("./Controllers/BookController");
 const LoanController = require("./Controllers/LoanController");
 const ReviewController = require("./Controllers/ReviewController");
 // const verifyToken = require("./Middlewares/verifyToken");
-// const Review = require("./Schemas/ReviewSchema");
-
-
 
 router.get("/users", UserController.index);
 router.get("/users/:id", UserController.show);
