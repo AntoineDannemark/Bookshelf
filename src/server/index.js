@@ -16,7 +16,7 @@ app.use(
         extended: false,
     }),
 );
-app.use(cors);
+app.use(cors());
 app.use(express.static(path.resolve(__dirname, "../../bin/client")));
 
 mongoose.connect( "mongodb://dev:dev@mongo:27017/Bookshelf?authSource=admin");

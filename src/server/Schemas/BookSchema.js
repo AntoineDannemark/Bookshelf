@@ -6,32 +6,33 @@ const BookSchema = new Schema(
         title: {
             type: String,
             lowercase: true,
-            required: true,
+            required:  [true, "the title is required"],
         },
         author: {
             type: String,
             lowercase: true,
-            required: true,
+            required: [true, "the author is required"],
         },
         isbn: {
             type: String,
-            required: true,
+            required: [true, "the ISBN is required"],
+            unique: true,
         },
         language: {
             type: String,
             lowercase: true,
-            required: true,
+            required: [true, "the language is required"],
         },
-        format: {
-            type: String,
-            enum: ["printed", "ebook"],
-            required: true,
+        ebook: {
+            type: Boolean,
+            default: false,
+            required: [true, "the format is required"],
         },
         owner: [
             {
                 type: mongoose.Schema.Types.ObjectId,
                 ref: "User",
-                required: true,
+                required: [true, "the owner is required"],
             },
         ],
     },

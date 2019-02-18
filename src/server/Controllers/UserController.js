@@ -1,28 +1,42 @@
 const User = require("../Schemas/UserSchema");
 
 const index = (req, res) => {
-    User.find({}, (err, users) => {
-        if (err) {
-            res.send(err);
-        }
-        res.send({users: users});
-    });
+    User.find()
+        .then(users => res.status(200).json(users))
+        .catch(err => res.status(500).json({
+                error: err,
+                message: "Failed to display users",
+            })
+        );
 };
 
 const show = (req, res) => {
-    User.findOne(
-        {
-            _id: req.params.id,
-        },
-        (err, user) => {
-            if (err) {
-                res.status(404).send(err);
-            } else {
-                res.send(user);
-            }
-        },
-    );
+    User.findOne({ _id: req.params.id, })
+        .then(user => res.status(200).json(user))
+        .catch(err =>         
+            res.status(500).json({
+                error: err,
+                message: "Failed to display user",
+            })
+        );
+ };
+
+const store = (req, res) => {
+    const newUser = new User({
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        email:  req.body.email,
+        password: req.body.password,
+        promotion: req.body.promotion,
+        admin: req.body.admin
+    });
+    console.log(newUser);
+    newUser
+        .save()
+        .then(user => res.status(200).json(user))     
+        .catch(err => res.status(500).json(err));
 };
+    
 
 const update = (req, res) => {
     User.findByIdAndUpdate(
@@ -54,5 +68,6 @@ const destroy = (req, res) => {
 
 exports.index = index;
 exports.show = show;
+exports.store = store;
 exports.update = update;
 exports.destroy = destroy;

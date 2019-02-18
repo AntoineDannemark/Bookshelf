@@ -8,37 +8,32 @@ const UserSchema = new Schema(
             type: String,
             lowercase: true,
             trim: true,
-            required: true,
+            required:  [true, "the email is required"],
+            unique: true,
         },
         password: {
             type: String,
-            required: true,
+            required:  [true, "the password is required"],
         },
         first_name: {
             type: String,
             lowercase: true,
-            trim: true,
-            required: true,
+            required:  [true, "the first name is required"],
         },
         last_name: {
             type: String,
             lowercase: true,
-            trim: true,
-            required: true,
+            required:  [true, "the last name is required"],
         },
-        is_admin: {
+        admin: {
             type: Boolean,
-            required: true,
             default: false,
         },
         promotion: {
             type: String,
-            required: true,
-            enum: ["LIE-Hamilton-1.7", "bruxelles"],
+            enum: ["liege", "bruxelles"],
+            required:  [true, "the promotion is required"],
         },
-        token: {
-            type: String,
-        }
     },
     {
         timestamps: {createdAt: "created_at"},
@@ -56,16 +51,5 @@ const UserSchema = new Schema(
 //         next();
 //     });
 // });
-
-// UserSchema.methods = {
-//     authenticate: function(password, next) {
-//         bcrypt.compare(password, this.password, function(err, result) {
-//             if (err) {
-//                 throw err;
-//             }
-//             next(result);
-//         });
-//     }
-// };
 
 module.exports = mongoose.model("User", UserSchema);

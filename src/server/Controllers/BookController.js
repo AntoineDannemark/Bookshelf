@@ -1,85 +1,22 @@
 const Book = require("../Schemas/BookSchema");
 
 const store = (req, res) => {
-    if (
-        !req.body.title ||
-        !req.body.author ||
-        !req.body.isbn ||
-        !req.body.language ||
-        !req.body.format ||
-        !req.body.owner
-    ) {
-        res.status(400).json({
-            text: "Wrong Request",
-        });
-    } else {
-        const book = {
+
+        const newBook = new Book({
             title: req.body.title,
             author: req.body.author,
             isbn: req.body.isbn,
             language: req.body.language,
             format: req.body.format,
             owner: req.body.owner,
-        };
-
-        const findBook = new Promise((resolve, reject) => {
-            Book.findOne(
-                {
-                    isbn: book.isbn,
-                },
-                (error, result) => {
-                    if (error) {
-                        reject(500).send(
-                            "server error 500 @ findBook.Book.findOne",
-                        );
-                    } else if (result) {
-                        res.send("book already registered");
-                    } else {
-                        resolve(true);
-                    }
-                },
-            );
         });
 
-        findBook.then(
-            () => {
-                let _b = new Book(book);
-
-                _b.save(err => {
-                    if (err) {
-                        console.log(err);
-                        res.status(500).json({
-                            text: "server error 500 @ findBook.then.save ",
-                        });
-                    } else {
-                        res.status(200).json({
-                            text: "New Book Created",
-                        });
-                    }
-                });
-            },
-            error => {
-                switch (error) {
-                    case 500:
-                        res.status(500).json({
-                            text: "server error 500 @ book creation",
-                        });
-                        break;
-                    case 204:
-                        res.status(204).json({
-                            text: "server error 204 @ book creation",
-                        });
-                        break;
-                    default:
-                        res.status(500).json({
-                            text: "server error default_500 @ book creation",
-                        });
-                }
-            },
-        );
-    }
+        newBook
+            .save()
+            .then(book => res.status(200).json(book))     
+            .catch(err => res.status(500).json(err));
 };
-
+        
 const show = (req, res) => {
     Book.findOne(
         {
