@@ -2,14 +2,21 @@ const jwt = require('jsonwebtoken');
 const LocalStorage = require("node-localstorage").LocalStorage;
 const localStorage = new LocalStorage("./scratch");
 
-const verifyToken = (req, res, next) => {
+exports.verifyToken = function(req, res, next) {
     let token = localStorage.getItem("token");
     if (token) {
+        console.log("token =" + token);
         try {
-            let decoded =  jwt.verify(token, "SecretStory");
-            console.log(decoded);
-            req._id = decoded.id;
-            next();
+            jwt.verify(token, "SecretStory", function(err, decoded) {
+                if(err) {
+                    return res.status(401).json({
+                        error: err,
+                        message: "Token verification failed",
+                    })
+                }
+                console.log(decoded);
+                next();
+              });
         } catch {
             return res.status(401).send({message: "Invalid token."});
         }
@@ -20,5 +27,3 @@ const verifyToken = (req, res, next) => {
     }
 
 }
-
-exports.verifyToken = verifyToken;

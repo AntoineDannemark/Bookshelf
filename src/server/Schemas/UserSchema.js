@@ -70,7 +70,7 @@ UserSchema.methods = {
             email: this.email,
         }
         return jwt.sign(payload, "SecretStory", {
-            expiresIn: "1h",
+            expiresIn: "10s",
         });
     }
 };

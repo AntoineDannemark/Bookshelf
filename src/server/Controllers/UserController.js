@@ -76,9 +76,6 @@ const login = (req, res) => {
     } else {
         User.findOne({email: req.body.email}, function(err, user)  {
             user.authenticate(req.body.password, function(isChecked) {
-                console.log(user);
-                console.log(req.body.password);
-                console.log(user.password);
                 if (err) {
                     return res.status(500).json({
                         error: err,
@@ -91,11 +88,11 @@ const login = (req, res) => {
                     }) 
                 } else if (isChecked) {
                     const token = user.getToken();
+                    localStorage.setItem("token", token);
                     res.status(200).json({
                         token: token,
                         text: "Authentication succesful",
                     });
-                    localStorage.setItem("token", token);
                 } else {
                     res.status(401).json({
                         text: "Wrong password",

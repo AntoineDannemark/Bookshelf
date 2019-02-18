@@ -7,14 +7,14 @@ const LoanController = require("./Controllers/LoanController");
 const ReviewController = require("./Controllers/ReviewController");
 const Middlewares = require("./Middlewares/verifyToken");
 
-router.get("/users", UserController.index);
+router.get("/users", Middlewares.verifyToken, UserController.index);
 router.get("/users/:id", UserController.show);
 router.post("/users", UserController.store);
 router.patch("/users/:id", UserController.update);
 router.delete("/users/:id", UserController.destroy);
 router.post("/users/login", UserController.login);
 
-router.get("/books", Middlewares.verifyToken, BookController.index);
+router.get("/books", BookController.index);
 router.get("/books/:id", BookController.show);
 router.post("/books", BookController.store);
 router.patch("/books/:id", BookController.update);
