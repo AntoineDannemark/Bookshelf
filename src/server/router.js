@@ -4,7 +4,7 @@ const router = new express.Router();
 const UserController = require("./Controllers/UserController");
 const BookController = require("./Controllers/BookController");
 const LoanController = require("./Controllers/LoanController");
-// const ReviewController = require("./Controllers/ReviewController");
+const ReviewController = require("./Controllers/ReviewController");
 // const verifyToken = require("./Middlewares/verifyToken");
 // const Review = require("./Schemas/ReviewSchema");
 
@@ -22,11 +22,11 @@ router.post("/books", BookController.store);
 router.patch("/books/:id", BookController.update);
 router.delete("/books/:id", BookController.destroy);
 
-// router.get("/reviews", ReviewController.index);
-// router.get("/reviews/:id", ReviewController.show);
-// router.post("/reviews", ReviewController.store);
-// router.patch("/reviews/:id", ReviewController.update);
-// router.delete("/reviews/:id", ReviewController.destroy);
+router.get("/reviews", ReviewController.index);
+router.get("/reviews/:id", ReviewController.show);
+router.post("/reviews", ReviewController.store);
+router.patch("/reviews/:id", ReviewController.update);
+router.delete("/reviews/:id", ReviewController.destroy);
 
 router.get("/loans", LoanController.index);
 router.get("/loans/:id", LoanController.show);

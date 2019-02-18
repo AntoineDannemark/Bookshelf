@@ -43,7 +43,7 @@ const show = (req, res) => {
 };
 
 const index = (req, res) => {
-    loan.find({})
+    Loan.find()
         .then(loans => res.status(200).json(loans))
         .catch(err => res.status(500).json({
             error: err,

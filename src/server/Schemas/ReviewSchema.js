@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const ReviewSchema = new Schema(
     {
-        note: {
+        score: {
             type: Number,
             min: [0, "note must be a value between 0 and 5"],
             max: [5, "note must be a value between 0 and 5"],
@@ -20,7 +20,7 @@ const ReviewSchema = new Schema(
                 required: [true, "the book reference is required"],
             },
         ],
-        owner: [
+        user: [
             {
                 type: mongoose.Schema.Types.ObjectId,
                 ref: "User",
