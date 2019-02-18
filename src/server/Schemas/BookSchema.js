@@ -28,6 +28,10 @@ const BookSchema = new Schema(
             default: false,
             required: [true, "the format is required"],
         },
+        picture: {
+            type: String,
+            required: [true, "The picture link is required"]
+        },
         owner: [
             {
                 type: mongoose.Schema.Types.ObjectId,

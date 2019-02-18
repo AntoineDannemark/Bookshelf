@@ -13,6 +13,7 @@ const store = (req, res) => {
             isbn: req.body.isbn,
             language: req.body.language,
             owner: req.body.owner,
+            picture: req.body.picture,
         });
         console.log(newBook);
         newBook

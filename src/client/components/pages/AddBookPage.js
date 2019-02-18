@@ -20,6 +20,7 @@ class AddBookPage extends Component {
             language: "",
             ebook: "",
             owner: "",
+            picture: "",
             errors: {},
             // coach: "",
         };
@@ -44,6 +45,7 @@ class AddBookPage extends Component {
             language: this.state.language,
             ebook: this.state.ebook,
             owner: this.state.owner,
+            picture: this.state.picture,
         };
         console.log(bookData);
 
@@ -77,7 +79,7 @@ class AddBookPage extends Component {
                     <form className="addbookform" onSubmit={this.onSubmit}>
                         <input
                             className="inputtext"
-                            placeholder={"Titre du livre"}
+                            placeholder={"Title"}
                             type="text"
                             id="title"
                             onChange={this.onChange}
@@ -85,7 +87,7 @@ class AddBookPage extends Component {
                         />
                         <input
                             className="inputtext"
-                            placeholder={"Code isbn du livre"}
+                            placeholder={"ISBN"}
                             type="text"
                             id="isbn"
                             onChange={this.onChange}
@@ -93,7 +95,7 @@ class AddBookPage extends Component {
                         />
                         <input
                             className="inputtext"
-                            placeholder={"Nom de l'auteur"}
+                            placeholder={"Author"}
                             type="text"
                             id="author"
                             onChange={this.onChange}
@@ -105,15 +107,15 @@ class AddBookPage extends Component {
                             onChange={this.onChange}
                             name="language">
                             <option value="french">
-                                {"Livre en français"}
+                                {"French"}
                             </option>
                             <option value="english">
-                                {"Livre en anglais"}
+                                {"English"}
                             </option>
                         </select>
                         <input
                             className="inputtext"
-                            placeholder={"Propriétaire du livre"}
+                            placeholder={"Owner"}
                             type="text"
                             id="owner"
                             onChange={this.onChange}
@@ -124,11 +126,19 @@ class AddBookPage extends Component {
                             id="ebook"
                             name="bookformat"
                             onChange={this.onChange}>
-                            <option value="false">{"Format papier"}</option>
+                            <option value="false">{"Printed"}</option>
                             <option value="true">
-                                {"Format numérique"}
+                                {"Ebook"}
                             </option>
                         </select>
+                        <input
+                            className="inputtext"
+                            placeholder={"Picture URL"}
+                            type="text"
+                            id="picture"
+                            onChange={this.onChange}
+                            error={this.state.errors}
+                        />
                         <button type="submit">submit</button>
                         {/* <SubmitButton /> */}
                     </form>
