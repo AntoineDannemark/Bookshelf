@@ -2,6 +2,8 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 import bcrypt from "bcrypt";
 const saltRounds = 10;
+const jwt = require('jsonwebtoken');
+const store = require('store');
 
 const UserSchema = new Schema(
     {
@@ -52,5 +54,37 @@ UserSchema.pre("save", function(next) {
         next();
     });
 });
+
+UserSchema.methods = {    
+    authenticate: function(password, next ) {
+        bcrypt
+            .compare(password, this.password)
+            .then(res => {
+                next(res);
+            })
+            .catch(err => {
+                res.status(500).json({
+                    error: err,
+                    message: "Failed to authenticate"
+                })
+            });
+    },
+
+    // getToken:  function(next) {
+    //     jwt.sign({
+    //         email: this.email,
+    //         admin: this.admin,
+    //       }, "OurDirtyLittleSecret", { expiresIn: '1h' }, (err, token) => {
+    //           if (err) {
+    //               return res.status(500).json({
+    //                   error: err,
+    //                   message: "Failed to et Token",
+    //               })
+    //           }
+    //           console.log(token);
+    //         //   store.set('user', { name:'Marcus' })
+    //       })
+    // },
+}
 
 module.exports = mongoose.model("User", UserSchema);

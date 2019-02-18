@@ -12,6 +12,7 @@ router.get("/users/:id", UserController.show);
 router.post("/users", UserController.store);
 router.patch("/users/:id", UserController.update);
 router.delete("/users/:id", UserController.destroy);
+router.post("/users/login", UserController.login);
 
 router.get("/books", BookController.index);
 router.get("/books/:id", BookController.show);

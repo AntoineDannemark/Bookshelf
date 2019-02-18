@@ -1,5 +1,5 @@
 const User = require("../Schemas/UserSchema");
-
+// const localStorage = require('store')
 
 const index = (req, res) => {
     User.find()
@@ -63,14 +63,48 @@ const destroy = (req, res) => {
 };
 
 // const login = (req, res) => {
-//     user.find({email: req.body.email})
-//         .then(
-//             if ()
-//         )
-// }
+//     if (!req.body.email || !req.body.password) {
+//         return res.status(400).json({
+//             error: err,
+//             message: "Both email and passord must be provided",
+//         })
+//     } else {
+//         User.findOne({email: req.body.email}, (err, user) => {
+//             console.log(user);
+//             console.log(req.body.password);
+//             console.log(user.password);
+//             if (err) {
+//                 return res.status(500).json({
+//                     error: err,
+//                     message: "Internal error "  
+//                 })
+//             } else if (!user) {
+//                 return res.status(400).json({
+//                     error: err,
+//                     message: "Email not found",
+//                 }) 
+//             } else {
+//                 user.authenticate(req.body.password, user.password,  isChecked => {
+//                     if (isChecked) {
+//                         res.status(200).json({
+//                             auth: true,
+//                             token: User.getToken(),
+//                             text: "Authentication succesful",
+//                         })
+//                     } else {
+//                         res.status(401).json({
+//                             text: "Wrong password",
+//                         });         
+//                     }                  
+//                 });
+//             }
+//         })
+//     }
+// };
 
 exports.index = index;
 exports.show = show;
 exports.store = store;
 exports.update = update;
 exports.destroy = destroy;
+exports.login = login;

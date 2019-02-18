@@ -52,6 +52,7 @@
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "image-webpack-loader": "^4.6.0",
+    "jsonwebtoken": "^8.4.0",
     "mongoose": "^5.4.10",
     "morgan": "^1.9.1",
     "react": "^16.7.0",
