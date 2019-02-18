@@ -18,7 +18,8 @@ class BookListDisplay extends Component {
             .get("http://localhost/api/books")
             .then(res => {
                 console.log(res.data);
-                const books = res.data.map(book =>  book["_id"]);
+                // const books = res.data.map(book =>  book["_id"]);
+                const books = res.data.map(book => ({ id: book._id, title: book.title }));
                 console.log(books);
                 this.setState({
                     books: books,
@@ -36,7 +37,7 @@ class BookListDisplay extends Component {
                 <select className="inputtext">
                 {this.state.books.map(book => {         
 
-                return (<option key={book}>{book}</option>)})}
+                return (<option key={book.id}>{book.title}</option>)})}
                     {/* {this.state.books.map(book=> {
                         <option> {book} </option>;
                     })} */}
