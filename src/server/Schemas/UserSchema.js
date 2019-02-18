@@ -58,33 +58,28 @@ UserSchema.pre("save", function(next) {
 UserSchema.methods = {    
     authenticate: function(password, next ) {
         bcrypt
-            .compare(password, this.password)
-            .then(res => {
+            .compare(password, this.password, function(err, res) {
+                if (err) {
+                    throw err;
+                }
                 next(res);
-            })
-            .catch(err => {
-                res.status(500).json({
-                    error: err,
-                    message: "Failed to authenticate"
-                })
             });
     },
 
-    // getToken:  function(next) {
-    //     jwt.sign({
-    //         email: this.email,
-    //         admin: this.admin,
-    //       }, "OurDirtyLittleSecret", { expiresIn: '1h' }, (err, token) => {
-    //           if (err) {
-    //               return res.status(500).json({
-    //                   error: err,
-    //                   message: "Failed to et Token",
-    //               })
-    //           }
-    //           console.log(token);
-    //         //   store.set('user', { name:'Marcus' })
-    //       })
-    // },
-}
+    getToken: function() {
+        const payload = {
+            email: this.email
+        }
+        return jwt.sign(payload, "SecretStory", {
+            expiresIn: "1h",
+        }, (err, token) => {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log(token);
+            }
+        });
+    },
+};
 
 module.exports = mongoose.model("User", UserSchema);
