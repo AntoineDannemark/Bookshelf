@@ -1,15 +1,14 @@
 import React, {Component} from "react";
-class InputTextArea extends Component {
-    render() {
-        return (
-            <div>
-                <input
-                    className="inputtext"
-                    type="text"
-                    placeholder={this.props.placeholder}
-                />
-            </div>
-        );
-    }
-}
+
+const InputTextArea = ({onChange}) => (
+    <div>
+        <input
+            className="inputtext"
+            type="text"
+            placeholder={this.props.placeholder}
+            onChange={onChange} 
+        />
+    </div>
+)
+
 export default InputTextArea;

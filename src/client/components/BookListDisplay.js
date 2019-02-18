@@ -34,13 +34,9 @@ class BookListDisplay extends Component {
         return (
             <div className="select">
                 <h3>{"Liste de tous les livres"}</h3>
-                <select className="inputtext">
-                {this.state.books.map(book => {         
-
-                return (<option key={book.id}>{book.title}</option>)})}
-                    {/* {this.state.books.map(book=> {
-                        <option> {book} </option>;
-                    })} */}
+                <select className="inputtext" onChange={this.onChange}>
+                {this.state.books.map(book => {
+                    return (<option key={book.id} value={book.id}>{book.title}</option>)})}
                 </select>
             </div>
         );

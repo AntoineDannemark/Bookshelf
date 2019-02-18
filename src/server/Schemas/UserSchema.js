@@ -67,7 +67,12 @@ UserSchema.methods = {
 
     getToken: function(next) {
         const payload = {
+            id: this._id,
             email: this.email,
+            first_name: this.first_name,
+            last_name: this.last_name,
+            promotion: this.promotion,      
+            admin: this.admin,      
         }
         return jwt.sign(payload, "SecretStory", {
             expiresIn: "10m",
