@@ -28,13 +28,17 @@ const store = (req, res) => {
         email:  req.body.email,
         password: req.body.password,
         promotion: req.body.promotion,
-        admin: req.body.admin
+        admin: req.body.admin,
     });
     console.log(newUser);
     newUser
         .save()
         .then(user => res.status(200).json(user))     
-        .catch(err => res.status(500).json(err));
+        .catch(err => res.status(500).json({
+            error: err,
+            message: "Failed to create user"
+            })
+        );
 };
     
 
@@ -42,28 +46,19 @@ const update = (req, res) => {
     User.findByIdAndUpdate(
         req.params.id,
         req.body,
-        {new: true},
-        (err, user) => {
-            if (err) {
-                return res.status(500).send(err);
-            }
-            return res.send(user);
-        },
-    );
+        {new: true})
+    .then(user => res.status(200).json(user))
+    .catch(err => res.status(500).json(err));    
 };
 
 const destroy = (req, res) => {
-    User.findByIdAndRemove(req.params.id, (err, user) => {
-        if (err) {
-            return res.status(500).send(err);
-        }
-        const response = {
-            message: "User successfully deleted",
-            id: user._id,
-        };
-
-        return res.status(200).send(response);
-    });
+    User.findByIdAndRemove(req.params.id)
+        .then(user => res.status(200).json(user))
+        .catch(err => res.status(500).json({
+                error: err,
+                message: "Failed to delete user",
+            })
+        );
 };
 
 exports.index = index;

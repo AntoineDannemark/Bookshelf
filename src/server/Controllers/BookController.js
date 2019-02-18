@@ -1,20 +1,28 @@
 const Book = require("../Schemas/BookSchema");
 
 const store = (req, res) => {
-
-        const newBook = new Book({
+if (req.body.owner===undefined) {
+    return res.status(400).json({
+        message: "the owner field is required ",
+    })
+}
+    
+    const newBook = new Book({
             title: req.body.title,
             author: req.body.author,
             isbn: req.body.isbn,
             language: req.body.language,
-            format: req.body.format,
             owner: req.body.owner,
         });
 
         newBook
             .save()
             .then(book => res.status(200).json(book))     
-            .catch(err => res.status(500).json(err));
+            .catch(err => res.status(500).json({
+                    error: err,
+                    message: "Failed to create book",
+                })
+            );
 };
         
 const show = (req, res) => {
