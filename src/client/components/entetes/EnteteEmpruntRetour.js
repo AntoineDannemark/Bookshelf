@@ -3,7 +3,7 @@ class DisplayResearchResult extends Component {
     render() {
         return (
             <div>
-                <p className="library">{"Emprunt/Retour de livre"}</p>
+                <p className="entete">{"Emprunt/Retour de livre"}</p>
             </div>
         );
     }

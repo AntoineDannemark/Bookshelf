@@ -5,10 +5,10 @@ class BookMovementCheckbox extends Component {
             <div>
                 <form method="post" action="traitement.php">
                     <p>
-                        <input type="checkbox" name="Emprunt" id="Emprunt" />{" "}
+                        <input type="checkbox" id="Emprunt" name="Emprunt" />
                         <label htmlFor="Emprunt">{"Emprunt"}</label>
                         <br />
-                        <input type="checkbox" name="Retour" id="Retour" />{" "}
+                        <input type="checkbox" name="Retour" id="Retour" />
                         <label htmlFor="Retour">{"Retour"}</label>
                         <br />
                     </p>

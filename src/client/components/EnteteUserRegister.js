@@ -3,7 +3,7 @@ class EnteteUserRegister extends Component {
     render() {
         return (
             <div>
-                <p className="library">{"Nouvel utilisateur"}</p>
+                <p className="entete">{"Nouvel utilisateur"}</p>
             </div>
         );
     }

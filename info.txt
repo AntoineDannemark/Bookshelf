@@ -22,3 +22,4 @@ idem avec extension whatfont
 
 pour travailler avec SASS -> npm install node-sass et npm install node-sass
 
+Pour le css : copier/coller https://github.com/necolas/normalize.css/blob/master/normalize.css

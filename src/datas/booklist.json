@@ -1,0 +1,82 @@
+[
+    {
+        "title": "Design Emotionnel",
+        "author": "Jeremy Keith",
+        "isbn": "9-782212-128611",
+        "language": "FR",
+        "format": "hardcover",
+        "owner": "Becode"
+    },
+    {
+        "title": "You're my favourite client",
+        "author": "Mike Monteiro",
+        "isbn": "9-781937-557140",
+        "language": "ENG",
+        "format": "hardcover",
+        "owner": "Becode"
+    },
+    {
+        "title": "Responsive Design : Patterns & Principles",
+        "author": "Ethan Marcotte",
+        "isbn": "9-781937-557331",
+        "language": "ENG",
+        "format": "hardcover",
+        "owner": "Leny"
+    },
+    {
+        "title": "Designer for touch",
+        "author": "Josh Clark",
+        "isbn": "9-781937-557287",
+        "language": "ENG",
+        "format": "hardcover",
+        "owner": "Becode"
+    },
+    {
+        "title": "La phase de recherche en web design",
+        "author": "Erika Hall",
+        "isbn": "9-782212-141467",
+        "language": "ENG",
+        "format": "hardcover",
+        "owner": "Becode"
+    },
+    {
+        "title": "Mobile first",
+        "author": "Luke Wroblewski",
+        "isbn": "9-782212-134063",
+        "language": "FR",
+        "format": "hardcover",
+        "owner": "Kevin"
+    },
+    {
+        "title": "Métier Web Designer",
+        "author": "Mike Monteiro",
+        "isbn": "9-782212-135275",
+        "language": "FR",
+        "format": "hardcover",
+        "owner": "Becode"
+    },
+    {
+        "title": "Responsible Responsive Design",
+        "author": "Scott Jehl",
+        "isbn": "9-781937-557164",
+        "language": "ENG",
+        "format": "hardcover",
+        "owner": "Leny"
+    },
+    {
+        "title": "Going responsive",
+        "author": "Karen McGrane",
+        "isbn": "9-781937-557300",
+        "language": "ENG",
+        "format": "hardcover",
+        "owner": "Becode"
+    },
+    {
+        "title": "On web typography",
+        "author": "Jason Santa Maria",
+        "isbn": "9-781937-557065",
+        "language": "ENG",
+        "format": "hardcover",
+        "owner": "Becode"
+    }
+]

@@ -3,7 +3,7 @@ class EnteteAddBook extends React.Component {
     render() {
         return (
             <div>
-                <p className="library">{"Ajouter un livre"}</p>
+                <p className="entete">{"Ajouter un livre"}</p>
             </div>
         );
     }

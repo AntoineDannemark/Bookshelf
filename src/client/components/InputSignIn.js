@@ -1,8 +1,9 @@
 import React from "react";
 
-const InputSignIn = ({onChange, errors}) => (
+const InputSignIn = () => (
     <div>
         <input
+            className="inputtext"
             type="email"
             id="email"
             onChange={onChange().bind(this)}
@@ -11,10 +12,9 @@ const InputSignIn = ({onChange, errors}) => (
             required={true}
         />
         <input
+            className="inputtext"
             type="text"
             id="password"
-            onChange={onChange().bind(this)}
-            error={errors.password}
             placeholder="Your password"
             required={true}
         />

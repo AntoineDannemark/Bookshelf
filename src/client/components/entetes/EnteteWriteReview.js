@@ -3,7 +3,7 @@ class EnteteWriteReview extends Component {
     render() {
         return (
             <div>
-                <p className="library">{"Rechercher un livre"}</p>
+                <p className="entete">{"Ecrire une revue"}</p>
             </div>
         );
     }

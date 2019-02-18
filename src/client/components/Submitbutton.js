@@ -1,8 +1,12 @@
 import React from "react";
 
-const Submitbutton = () => (
-    <div className="positionrelative">
-        <input className="logsubmitbutton" type="submit" />
+const Submitbutton = props => (
+    <div>
+        <input
+            onClick={() => props.jeClique()}
+            className="submitbutton"
+            type="submit"
+        />
     </div>
 );
 

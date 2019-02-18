@@ -1,7 +1,7 @@
 import React from "react";
 
-// import Submitbutton from "./Submitbutton";
 import Inputsignin from "./InputSignIn";
+import Submitbutton from "./Submitbutton";
 
 const Logform = ({onChange, handleClick, logout, getUsers, errors}) => (
     <div className="logformbackground">
